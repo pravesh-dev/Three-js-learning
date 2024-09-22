@@ -7,9 +7,9 @@ let box = new THREE.BoxGeometry(1, 1, 1);
 let material = new THREE.MeshBasicMaterial({ color: 'teal' });
 let mesh = new THREE.Mesh(box, material);
 
-mesh.rotation.y = 10
-mesh.rotation.x = 10
-mesh.rotation.z = 10
+mesh.position.y = 1
+mesh.position.x = 2
+mesh.position.z = 1
 
 scene.add(mesh);
 
