@@ -8,6 +8,8 @@ let material = new THREE.MeshBasicMaterial({ color: 'teal' });
 let mesh = new THREE.Mesh(box, material);
 
 mesh.rotation.y = 10
+mesh.rotation.x = 10
+mesh.rotation.z = 10
 
 scene.add(mesh);
 
