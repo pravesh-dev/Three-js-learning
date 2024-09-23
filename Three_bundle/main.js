@@ -9,7 +9,7 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-const geometry = new THREE.BoxGeometry(1, 1, 1);
+const geometry = new THREE.SphereGeometry(2, 32, 16);
 const material = new THREE.MeshBasicMaterial({ color: 'teal', wireframe: true });
 const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
@@ -30,11 +30,16 @@ const controls = new OrbitControls( camera, renderer.domElement );
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 
+let clock = new THREE.Clock();
+
 function animate() {
   window.requestAnimationFrame(animate);
   renderer.render(scene, camera);
   controls.update();
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
+
+  let time = clock.getElapsedTime();
+
+  cube.rotation.x = time * 0.4;
+  cube.rotation.y = time * 0.4;
 }
 animate();
