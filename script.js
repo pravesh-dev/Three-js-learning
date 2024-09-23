@@ -7,9 +7,7 @@ let box = new THREE.BoxGeometry(1, 1, 1);
 let material = new THREE.MeshBasicMaterial({ color: 'teal' });
 let mesh = new THREE.Mesh(box, material);
 
-mesh.position.y = 1
-mesh.position.x = 2
-mesh.position.z = 1
+mesh.position.x = 1
 
 scene.add(mesh);
 
@@ -19,3 +17,10 @@ const renderer = new THREE.WebGLRenderer({ canvas });
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 renderer.render(scene, camera);
+
+function animate() {
+    requestAnimationFrame(animate);
+    renderer.render(scene, camera);
+}
+
+animate();
