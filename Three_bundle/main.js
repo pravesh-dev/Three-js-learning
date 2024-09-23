@@ -27,6 +27,8 @@ window.addEventListener("resize", () => {
 })
 
 const controls = new OrbitControls( camera, renderer.domElement );
+controls.enableDamping = true;
+controls.dampingFactor = 0.05;
 
 function animate() {
   window.requestAnimationFrame(animate);
