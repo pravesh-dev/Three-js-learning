@@ -18,10 +18,16 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 
 renderer.render(scene, camera);
 
+let clock = new THREE.Clock();
+
 function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
-    mesh.rotation.y += 0.01;
+
+    let time = clock.getElapsedTime();
+
+    mesh.rotation.y = time;
+    mesh.rotation.z = time;
 }
 
 animate();
