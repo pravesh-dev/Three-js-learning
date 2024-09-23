@@ -9,7 +9,8 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-const geometry = new THREE.SphereGeometry(2, 32, 16);
+// const geometry = new THREE.SphereGeometry(2, 32, 16, 1, Math.PI * 2, 0, Math.PI * 4);
+const geometry = new THREE.CylinderGeometry(2, 2, 3, 15, 2, true, 5, 20);
 const material = new THREE.MeshBasicMaterial({ color: 'teal', wireframe: true });
 const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
@@ -39,7 +40,7 @@ function animate() {
 
   let time = clock.getElapsedTime();
 
-  cube.rotation.x = time * 0.4;
-  cube.rotation.y = time * 0.4;
+  // cube.rotation.x = time * 0.4;
+  // cube.rotation.y = time * 0.4;
 }
 animate();
