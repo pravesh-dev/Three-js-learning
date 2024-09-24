@@ -5,11 +5,13 @@ camera.position.z = 4;
 scence.add(camera);
 
 let box = new THREE.IcosahedronGeometry(1, 1);
-let material = new THREE.MeshBasicMaterial({color: 'teal', flatShading: true, wireframe: true});
+let material = new THREE.MeshStandardMaterial({color: 'fff', flatShading: true});
 
 let mesh = new THREE.Mesh(box, material)
-
 scence.add(mesh);
+
+let hemilight = new THREE.HemisphereLight(0xffffff, 0x0000ff, 0.9);
+scence.add(hemilight);
 
 const canvas = document.querySelector("#my-canvas");
 const renderer = new THREE.WebGLRenderer({canvas, antialias: true});
