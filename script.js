@@ -4,8 +4,8 @@ let camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHei
 camera.position.z = 4;
 scence.add(camera);
 
-let box = new THREE.BoxGeometry(1, 1, 1);
-let material = new THREE.MeshBasicMaterial({color: 'teal'});
+let box = new THREE.IcosahedronGeometry(1, 1);
+let material = new THREE.MeshBasicMaterial({color: 'teal', flatShading: true, wireframe: true});
 
 let mesh = new THREE.Mesh(box, material)
 
