@@ -4,13 +4,24 @@ let camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHei
 camera.position.z = 4;
 scence.add(camera);
 
-let box = new THREE.IcosahedronGeometry(1, 1);
-let material = new THREE.MeshStandardMaterial({color: 'fff', flatShading: true});
+let box = new THREE.IcosahedronGeometry(1, 6);
+let dotBox = new THREE.BoxGeometry(1, 1, 1);
+let dotMaterial = new THREE.MeshBasicMaterial({color: 'black'});
+let material = new THREE.MeshStandardMaterial({color: 'yellow', flatShading: true});
+let wireMaterial = new THREE.MeshBasicMaterial({color: 'red', wireframe: true});
 
 let mesh = new THREE.Mesh(box, material)
 scence.add(mesh);
 
-let hemilight = new THREE.HemisphereLight(0xffffff, 0x0000ff, 0.9);
+let wireMesh = new THREE.Mesh(box, wireMaterial);
+wireMesh.position.y = 0.05;
+mesh.add(wireMesh);
+
+let dotMesh = new THREE.Mesh(dotBox, dotMaterial);
+dotMesh.position.y = 0.05;
+mesh.add(dotMesh);
+
+let hemilight = new THREE.HemisphereLight(0xffffff, 0x000000, 0.9);
 scence.add(hemilight);
 
 const canvas = document.querySelector("#my-canvas");
