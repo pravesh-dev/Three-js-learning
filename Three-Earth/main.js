@@ -6,8 +6,9 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 camera.position.z = 5;
 scene.add(camera)
 
-let geometry = new THREE.IcosahedronGeometry(2.4, 2)
-let material = new THREE.MeshStandardMaterial({color: 0x779988, flatShading: true})
+const textureLoader = new THREE.TextureLoader();
+let geometry = new THREE.IcosahedronGeometry(2.4, 20)
+let material = new THREE.MeshStandardMaterial({ map: textureLoader.load('/earthlights1k.jpg') })
 let earthMesh = new THREE.Mesh(geometry, material)
 scene.add(earthMesh)
 
