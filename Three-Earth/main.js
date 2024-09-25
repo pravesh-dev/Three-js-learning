@@ -7,11 +7,11 @@ camera.position.z = 5;
 scene.add(camera)
 
 let geometry = new THREE.IcosahedronGeometry(2.4, 2)
-let material = new THREE.MeshStandardMaterial({color: 0xffff00})
+let material = new THREE.MeshStandardMaterial({color: 0x779988, flatShading: true})
 let earthMesh = new THREE.Mesh(geometry, material)
 scene.add(earthMesh)
 
-const hemilight = new THREE.HemisphereLight('salmon', 'cyan', 0.9);
+const hemilight = new THREE.HemisphereLight(0xffffff, 0x000000, 0.9);
 scene.add(hemilight)
 
 let canvas = document.querySelector('.my-canvas')
@@ -36,8 +36,8 @@ function animate() {
   renderer.render(scene, camera)
 
   let time = clock.getElapsedTime()
-  earthMesh.rotation.y = time
-  earthMesh.rotation.z = time
+  earthMesh.rotation.y = time * 0.2;
+  earthMesh.rotation.z = time * 0.2;
 
   controls.update()
 }
