@@ -2,7 +2,7 @@ import * as THREE from 'three'
 
 export default function getStarField({numStars= 500} = {}) {
     function randomSpherePoint() {
-        const radius = Math.random() * 25 + 25;
+        const radius = Math.random() *305 + 205;
         const u = Math.random();
         const v = Math.random();
         const theta = 2 * Math.PI * u;
@@ -34,7 +34,7 @@ export default function getStarField({numStars= 500} = {}) {
     geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
     geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
     const material = new THREE.PointsMaterial({
-        size: 0.02,
+        size: Math.random() * 0.6 + 0.6,
         vertexColors: true,
         map: new THREE.TextureLoader().load('/star.png'),
     });
