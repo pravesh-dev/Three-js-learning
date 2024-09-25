@@ -58,11 +58,8 @@ function animate() {
 
   let time = clock.getElapsedTime()
   earthMesh.rotation.y = time * 0.04;
-
   lightMesh.rotation.y = time * 0.04;
-  
-  cloudMesh.rotation.y = time * 0.04;
-
+  cloudMesh.rotation.y = time * 0.1;
   stars.rotation.y = -(time * 0.01);
 
   controls.update()
