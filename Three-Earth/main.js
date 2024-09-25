@@ -13,21 +13,21 @@ scene.add(earthGroup);
 
 const textureLoader = new THREE.TextureLoader();
 let geometry = new THREE.IcosahedronGeometry(1.3, 20)
-let material = new THREE.MeshStandardMaterial({ map: textureLoader.load('/earthmap1k.jpg') })
+let material = new THREE.MeshStandardMaterial({ map: textureLoader.load('/earth.jpg') })
 // let material = new THREE.MeshStandardMaterial({ map: textureLoader.load('/some.jpg') })
 
 let earthMesh = new THREE.Mesh(geometry, material)
 earthGroup.add(earthMesh);
 
-let lightMaterial = new THREE.MeshBasicMaterial({ map: textureLoader.load('/earthlights1k.jpg'), blending: THREE.AdditiveBlending })
+let lightMaterial = new THREE.MeshBasicMaterial({ map: textureLoader.load('/earthNight.jpg'), blending: THREE.AdditiveBlending })
 let lightMesh = new THREE.Mesh(geometry, lightMaterial);
 earthGroup.add(lightMesh);
 
 let stars = getStarField({numStars: 3000});
 scene.add(stars)
 
-const sunLight = new THREE.DirectionalLight(0xffffff);
-sunLight.position.set(-2, 0.7, 1.5);
+const sunLight = new THREE.DirectionalLight(0xffffff, 0.3);
+sunLight.position.set(-2, 0.5, 1.5);
 scene.add(sunLight)
 
 let canvas = document.querySelector('.my-canvas')
