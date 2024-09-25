@@ -12,16 +12,25 @@ earthGroup.rotation.z = -23.4 * Math.PI / 180;
 scene.add(earthGroup);
 
 const textureLoader = new THREE.TextureLoader();
-let geometry = new THREE.IcosahedronGeometry(2.4, 20)
+let geometry = new THREE.IcosahedronGeometry(1.3, 20)
 let material = new THREE.MeshStandardMaterial({ map: textureLoader.load('/earthmap1k.jpg') })
+// let material = new THREE.MeshStandardMaterial({ map: textureLoader.load('/some.jpg') })
+
 let earthMesh = new THREE.Mesh(geometry, material)
 earthGroup.add(earthMesh)
 
 let stars = getStarField({numStars: 3000});
 scene.add(stars)
 
-const hemilight = new THREE.HemisphereLight(0xffffff, 0x000000, 0.9);
-scene.add(hemilight)
+// const hemilight = new THREE.HemisphereLight(0xffffff, 0x000000, 0.9);
+// scene.add(hemilight)
+
+const sunLight = new THREE.DirectionalLight(0xffffff);
+sunLight.position.set(-1, 0.7, 0.5);
+scene.add(sunLight)
+
+const sunLightHelper = new THREE.DirectionalLightHelper(sunLight, 1);
+scene.add(sunLightHelper)
 
 let canvas = document.querySelector('.my-canvas')
 const renderer = new THREE.WebGLRenderer({canvas, antialias: true})
