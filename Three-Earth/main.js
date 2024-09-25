@@ -17,7 +17,11 @@ let material = new THREE.MeshStandardMaterial({ map: textureLoader.load('/earthm
 // let material = new THREE.MeshStandardMaterial({ map: textureLoader.load('/some.jpg') })
 
 let earthMesh = new THREE.Mesh(geometry, material)
-earthGroup.add(earthMesh)
+earthGroup.add(earthMesh);
+
+let lightMaterial = new THREE.MeshBasicMaterial({ map: textureLoader.load('/earthlights1k.jpg'), blending: THREE.AdditiveBlending })
+let lightMesh = new THREE.Mesh(geometry, lightMaterial);
+earthGroup.add(lightMesh);
 
 let stars = getStarField({numStars: 3000});
 scene.add(stars)
@@ -26,7 +30,7 @@ scene.add(stars)
 // scene.add(hemilight)
 
 const sunLight = new THREE.DirectionalLight(0xffffff);
-sunLight.position.set(-1, 0.7, 0.5);
+sunLight.position.set(-2, 0.7, 1.5);
 scene.add(sunLight)
 
 const pointLight = new THREE.PointLight(0xffffff, 1, 100, 2);
@@ -56,10 +60,10 @@ function animate() {
 
   let time = clock.getElapsedTime()
   earthMesh.rotation.y = time * 0.04;
-  earthMesh.rotation.z = time * 0.04;
+
+  lightMesh.rotation.y = time * 0.04;
 
   stars.rotation.y = -(time * 0.01);
-  stars.rotation.z = -(time * 0.01);
 
   controls.update()
 }
