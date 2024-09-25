@@ -5,15 +5,19 @@ import getStarField from './getStarField.js';
 const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
 camera.position.z = 5;
-scene.add(camera)
+// scene.add(camera)
+
+const earthGroup = new THREE.Group();
+earthGroup.rotation.z = -23.4 * Math.PI / 180;
+scene.add(earthGroup);
 
 const textureLoader = new THREE.TextureLoader();
 let geometry = new THREE.IcosahedronGeometry(2.4, 20)
 let material = new THREE.MeshStandardMaterial({ map: textureLoader.load('/earthmap1k.jpg') })
 let earthMesh = new THREE.Mesh(geometry, material)
-scene.add(earthMesh)
+earthGroup.add(earthMesh)
 
-let stars = getStarField({numStars: 2000});
+let stars = getStarField({numStars: 3000});
 scene.add(stars)
 
 const hemilight = new THREE.HemisphereLight(0xffffff, 0x000000, 0.9);

@@ -7,13 +7,13 @@ export default function getStarField({numStars= 500} = {}) {
         const v = Math.random();
         const theta = 2 * Math.PI * u;
         const phi = Math.acos(2 * v - 1);
-        let x = radius * Math.cos(theta) * Math.sin(phi);
-        let y = radius * Math.sin(theta) * Math.sin(phi);
+        let x = radius * Math.sin(phi) * Math.cos(theta);
+        let y = radius * Math.sin(phi) * Math.sin(theta);
         let z = radius * Math.cos(phi);
 
         return {
             pos: new THREE.Vector3(x, y, z),
-            hue: 0.6,
+            hue: 0.6, // radius * 0.02 + 0.5
             minDist: radius,
         };
     }
@@ -25,6 +25,7 @@ export default function getStarField({numStars= 500} = {}) {
     for(let i = 0; i < numStars; i += 1) {
         let p = randomSpherePoint();
         const { pos, hue } = p;
+        positions.push(p)
         col = new THREE.Color().setHSL(hue, 0.2, Math.random());
         vertices.push(pos.x, pos.y, pos.z);
         colors.push(col.r, col.g, col.b);
