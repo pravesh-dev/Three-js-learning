@@ -48,6 +48,9 @@ function animate() {
   earthMesh.rotation.y = time * 0.04;
   earthMesh.rotation.z = time * 0.04;
 
+  stars.rotation.y = -(time * 0.01);
+  stars.rotation.z = -(time * 0.01);
+
   controls.update()
 }
 
