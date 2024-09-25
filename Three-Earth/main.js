@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import getStarField from './getStarField.js';
+import {getFresnelMat} from './getFresenalMet.js';
 
 const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
@@ -39,6 +40,11 @@ let cloudMaterial = new THREE.MeshStandardMaterial({ map: textureLoader.load('/c
 let cloudMesh = new THREE.Mesh(geometry, cloudMaterial);
 cloudMesh.scale.setScalar(1.006)
 earthGroup.add(cloudMesh);
+
+let fresnelMaterial = getFresnelMat();
+let glowMesh = new THREE.Mesh(geometry, fresnelMaterial);
+glowMesh.scale.setScalar(1.02)
+earthGroup.add(glowMesh);
 
 let stars = getStarField({numStars: 3000});
 scene.add(stars)
