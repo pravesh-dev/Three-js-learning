@@ -18,17 +18,17 @@ const wireMesh = new THREE.Mesh(geometry, wireMaterial);
 scene.add(cube);
 cube.add(wireMesh);
 
-let hemilight = new THREE.HemisphereLight('salmon', 'cyan', 0.9);
-const helper = new THREE.HemisphereLightHelper( hemilight, 3 );
-scene.add(helper);
-scene.add(hemilight);
+// let hemilight = new THREE.HemisphereLight('salmon', 'cyan', 0.9);
+// const helper = new THREE.HemisphereLightHelper( hemilight, 3 );
+// scene.add(helper);
+// scene.add(hemilight);
 
-// const light = new THREE.DirectionalLight( 'red', 1 );
-// light.position.set( 2, 2, 0 );
-// scene.add( light );
+const light = new THREE.DirectionalLight( 'red', 1 );
+light.position.set( 2, 2, 0 );
+scene.add( light );
 
-// const helper = new THREE.DirectionalLightHelper( light, 2 );
-// scene.add( helper );
+const helper = new THREE.DirectionalLightHelper( light, 2 );
+scene.add( helper );
 
 // const pointLight = new THREE.PointLight('salmon', 1, 100)
 // pointLight.position.set(0, 0, 0)
