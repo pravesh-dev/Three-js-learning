@@ -29,8 +29,9 @@ const sunLight = new THREE.DirectionalLight(0xffffff);
 sunLight.position.set(-1, 0.7, 0.5);
 scene.add(sunLight)
 
-const sunLightHelper = new THREE.DirectionalLightHelper(sunLight, 1);
-scene.add(sunLightHelper)
+const pointLight = new THREE.PointLight(0xffffff, 1, 100, 2);
+pointLight.position.set(-1, 1, 1.3);
+scene.add(pointLight)
 
 let canvas = document.querySelector('.my-canvas')
 const renderer = new THREE.WebGLRenderer({canvas, antialias: true})
