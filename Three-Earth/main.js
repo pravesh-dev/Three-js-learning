@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import getStarField from './getStarField.js';
 
 const scene = new THREE.Scene()
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
@@ -8,9 +9,12 @@ scene.add(camera)
 
 const textureLoader = new THREE.TextureLoader();
 let geometry = new THREE.IcosahedronGeometry(2.4, 20)
-let material = new THREE.MeshStandardMaterial({ map: textureLoader.load('/earthlights1k.jpg') })
+let material = new THREE.MeshStandardMaterial({ map: textureLoader.load('/earthmap1k.jpg') })
 let earthMesh = new THREE.Mesh(geometry, material)
 scene.add(earthMesh)
+
+let stars = getStarField({numStars: 2000});
+scene.add(stars)
 
 const hemilight = new THREE.HemisphereLight(0xffffff, 0x000000, 0.9);
 scene.add(hemilight)
@@ -37,8 +41,8 @@ function animate() {
   renderer.render(scene, camera)
 
   let time = clock.getElapsedTime()
-  earthMesh.rotation.y = time * 0.2;
-  earthMesh.rotation.z = time * 0.2;
+  earthMesh.rotation.y = time * 0.04;
+  earthMesh.rotation.z = time * 0.04;
 
   controls.update()
 }

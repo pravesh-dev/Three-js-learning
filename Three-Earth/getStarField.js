@@ -1,0 +1,42 @@
+import * as THREE from 'three'
+
+export default function getStarField({numStars= 500} = {}) {
+    function randomSpherePoint() {
+        const radius = Math.random() * 25 + 25;
+        const u = Math.random();
+        const v = Math.random();
+        const theta = 2 * Math.PI * u;
+        const phi = Math.acos(2 * v - 1);
+        let x = radius * Math.cos(theta) * Math.sin(phi);
+        let y = radius * Math.sin(theta) * Math.sin(phi);
+        let z = radius * Math.cos(phi);
+
+        return {
+            pos: new THREE.Vector3(x, y, z),
+            hue: 0.6,
+            minDist: radius,
+        };
+    }
+    const vertices = [];
+    const colors = [];
+    const positions = [];
+    let col;
+
+    for(let i = 0; i < numStars; i += 1) {
+        let p = randomSpherePoint();
+        const { pos, hue } = p;
+        col = new THREE.Color().setHSL(hue, 0.2, Math.random());
+        vertices.push(pos.x, pos.y, pos.z);
+        colors.push(col.r, col.g, col.b);
+    }
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+    geometry.setAttribute('color', new THREE.Float32BufferAttribute(colors, 3));
+    const material = new THREE.PointsMaterial({
+        size: 0.02,
+        vertexColors: true,
+        map: new THREE.TextureLoader().load('/star.png'),
+    });
+    const points = new THREE.Points(geometry, material);
+    return points;
+}
