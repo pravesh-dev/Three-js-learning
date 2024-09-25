@@ -12,7 +12,7 @@ earthGroup.rotation.z = -23.4 * Math.PI / 180;
 scene.add(earthGroup);
 
 const textureLoader = new THREE.TextureLoader();
-let geometry = new THREE.IcosahedronGeometry(1.3, 20)
+let geometry = new THREE.IcosahedronGeometry(1.8, 20)
 let material = new THREE.MeshStandardMaterial({ map: textureLoader.load('/earth.jpg') })
 // let material = new THREE.MeshStandardMaterial({ map: textureLoader.load('/some.jpg') })
 
@@ -22,6 +22,11 @@ earthGroup.add(earthMesh);
 let lightMaterial = new THREE.MeshBasicMaterial({ map: textureLoader.load('/earthNight.jpg'), blending: THREE.AdditiveBlending })
 let lightMesh = new THREE.Mesh(geometry, lightMaterial);
 earthGroup.add(lightMesh);
+
+let cloudMaterial = new THREE.MeshStandardMaterial({ map: textureLoader.load('/cloud.jpg'), blending: THREE.AdditiveBlending })
+let cloudMesh = new THREE.Mesh(geometry, cloudMaterial);
+cloudMesh.scale.setScalar(1.006)
+earthGroup.add(cloudMesh);
 
 let stars = getStarField({numStars: 3000});
 scene.add(stars)
@@ -55,6 +60,8 @@ function animate() {
   earthMesh.rotation.y = time * 0.04;
 
   lightMesh.rotation.y = time * 0.04;
+  
+  cloudMesh.rotation.y = time * 0.04;
 
   stars.rotation.y = -(time * 0.01);
 
