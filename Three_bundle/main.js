@@ -10,10 +10,16 @@ const camera = new THREE.PerspectiveCamera(
 );
 
 // const geometry = new THREE.SphereGeometry(2, 32, 16, 1, Math.PI * 2, 0, Math.PI * 4);
-const geometry = new THREE.CylinderGeometry(2, 2, 3, 15, 2, true, 5, 20);
-const material = new THREE.MeshBasicMaterial({ color: 'teal', wireframe: true });
+const geometry = new THREE.IcosahedronGeometry(1, 2);
+const material = new THREE.MeshStandardMaterial({flatShading: true, color: '0xffffff'});
+const wireMaterial = new THREE.MeshBasicMaterial({color: '0xffffff', wireframe: true, antialias: true});
 const cube = new THREE.Mesh(geometry, material);
+const wireMesh = new THREE.Mesh(geometry, wireMaterial);
 scene.add(cube);
+cube.add(wireMesh);
+
+let hemilight = new THREE.HemisphereLight('salmon', 'cyan', 0.9);
+scene.add(hemilight);
 
 camera.position.z = 5;
 
@@ -27,20 +33,14 @@ window.addEventListener("resize", () => {
   camera.updateProjectionMatrix();
 })
 
+
 const controls = new OrbitControls( camera, renderer.domElement );
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
-
-let clock = new THREE.Clock();
 
 function animate() {
   window.requestAnimationFrame(animate);
   renderer.render(scene, camera);
   controls.update();
-
-  let time = clock.getElapsedTime();
-
-  // cube.rotation.x = time * 0.4;
-  // cube.rotation.y = time * 0.4;
 }
 animate();

@@ -554,23 +554,6 @@ video {
   display: none;
 }
 
-.h-20 {
-  height: 5rem;
-}
-
-.w-10 {
-  width: 2.5rem;
-}
-
-.overflow-hidden {
-  overflow: hidden;
-}
-
-.bg-red-800 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(153 27 27 / var(--tw-bg-opacity));
-}
-
 *{
   margin: 0;
   padding: 0;
