@@ -23,19 +23,19 @@ cube.add(wireMesh);
 // scene.add(helper);
 // scene.add(hemilight);
 
-const light = new THREE.DirectionalLight( 'red', 1 );
-light.position.set( 2, 2, 0 );
-scene.add( light );
+// const light = new THREE.DirectionalLight( 'red', 1 );
+// light.position.set( 2, 2, 0 );
+// scene.add( light );
 
-const helper = new THREE.DirectionalLightHelper( light, 2 );
-scene.add( helper );
+// const helper = new THREE.DirectionalLightHelper( light, 2 );
+// scene.add( helper );
 
-// const pointLight = new THREE.PointLight('salmon', 1, 100)
-// pointLight.position.set(0, 0, 0)
-// scene.add(pointLight)
+const pointLight = new THREE.PointLight('salmon', 1, 100)
+pointLight.position.set(1, 1, 1)
+scene.add(pointLight)
 
-// const helper = new THREE.PointLightHelper(pointLight, 2)
-// scene.add(helper)
+const helper = new THREE.PointLightHelper(pointLight, 1)
+scene.add(helper)
 
 
 camera.position.z = 5;
