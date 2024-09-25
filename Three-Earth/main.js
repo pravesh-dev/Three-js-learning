@@ -26,16 +26,9 @@ earthGroup.add(lightMesh);
 let stars = getStarField({numStars: 3000});
 scene.add(stars)
 
-// const hemilight = new THREE.HemisphereLight(0xffffff, 0x000000, 0.9);
-// scene.add(hemilight)
-
 const sunLight = new THREE.DirectionalLight(0xffffff);
 sunLight.position.set(-2, 0.7, 1.5);
 scene.add(sunLight)
-
-const pointLight = new THREE.PointLight(0xffffff, 1, 100, 2);
-pointLight.position.set(-1, 1, 1.3);
-scene.add(pointLight)
 
 let canvas = document.querySelector('.my-canvas')
 const renderer = new THREE.WebGLRenderer({canvas, antialias: true})
