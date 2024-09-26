@@ -27,7 +27,7 @@ let geometry = new THREE.IcosahedronGeometry(1.8, 20)
 let material = new THREE.MeshStandardMaterial({ map: textureLoader.load('/earth.jpg'), specularMap: textureLoader.load("/02_earthspec1k.jpg"),
   bumpMap: textureLoader.load("/01_earthbump1k.jpg"),
   bumpScale: 0.04, })
-// let material = new THREE.MeshStandardMaterial({ map: textureLoader.load('/some.jpg') })
+// let material = new THREE.MeshBasicMaterial({ map: textureLoader.load('/sunmap.jpg') })
 
 let earthMesh = new THREE.Mesh(geometry, material)
 earthGroup.add(earthMesh);
@@ -62,7 +62,7 @@ function animate() {
   let time = clock.getElapsedTime()
   earthMesh.rotation.y = time * 0.04;
   lightMesh.rotation.y = time * 0.04;
-  cloudMesh.rotation.y = time * 0.1;
+  cloudMesh.rotation.y = time * 0.07;
   stars.rotation.y = -(time * 0.01);
   
   renderer.render(scene, camera)
