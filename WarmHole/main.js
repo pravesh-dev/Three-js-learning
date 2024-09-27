@@ -15,7 +15,7 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 
 let geometry = new THREE.BoxGeometry(1, 1, 2)
-let material = new THREE.MeshStandardMaterial({flatShading: true, color: 0xffffff })
+let material = new THREE.MeshStandardMaterial({ wireframe: true})
 
 let mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh);
@@ -23,15 +23,8 @@ scene.add(mesh);
 let hemiLight = new THREE.HemisphereLight(0xffffff, 0xfc0404, 0.9);
 scene.add(hemiLight);
 
-
-let clock = new THREE.Clock()
-
 function animate() {
   requestAnimationFrame(animate)
-  
-  let time = clock.getElapsedTime()
-  mesh.rotation.y = time * 0.04;
-  
   renderer.render(scene, camera)
   controls.update()
 }
