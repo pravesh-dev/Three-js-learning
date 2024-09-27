@@ -43,6 +43,11 @@ let cloudMesh = new THREE.Mesh(geometry, cloudMaterial);
 cloudMesh.scale.setScalar(1.006)
 earthGroup.add(cloudMesh);
 
+let fresnelMaterial = getFresnelMat();
+let glowMesh = new THREE.Mesh(geometry, fresnelMaterial);
+glowMesh.scale.setScalar(1.02);
+earthGroup.add(glowMesh);
+
 let stars = getStarField({numStars: 3000});
 scene.add(stars)
 
@@ -59,7 +64,7 @@ function animate() {
   let time = clock.getElapsedTime()
   earthMesh.rotation.y = time * 0.04;
   lightMesh.rotation.y = time * 0.04;
-  // cloudMesh.rotation.y = time * 0.07;
+  cloudMesh.rotation.y = time * 0.07;
   stars.rotation.y = -(time * 0.01);
   
   renderer.render(scene, camera)
