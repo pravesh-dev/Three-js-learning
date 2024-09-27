@@ -36,22 +36,19 @@ let lightMaterial = new THREE.MeshBasicMaterial({ map: textureLoader.load('/eart
 let lightMesh = new THREE.Mesh(geometry, lightMaterial);
 earthGroup.add(lightMesh);
 
-let cloudMaterial = new THREE.MeshStandardMaterial({ map: textureLoader.load('/cloud.jpg'), blending: THREE.AdditiveBlending, alphaMap: textureLoader.load('/05_earthcloudmaptrans.jpg'),})
+let cloudMaterial = new THREE.MeshStandardMaterial({
+  map: textureLoader.load('/cloud.jpg')
+})
 let cloudMesh = new THREE.Mesh(geometry, cloudMaterial);
 cloudMesh.scale.setScalar(1.006)
 earthGroup.add(cloudMesh);
 
-let fresnelMaterial = getFresnelMat();
-let glowMesh = new THREE.Mesh(geometry, fresnelMaterial);
-glowMesh.scale.setScalar(1.02)
-earthGroup.add(glowMesh);
-
 let stars = getStarField({numStars: 3000});
 scene.add(stars)
 
-const sunLight = new THREE.DirectionalLight(0xffffff, 2.0);
-sunLight.position.set(-2, 0.5, 1.5);
-scene.add(sunLight)
+// const sunLight = new THREE.DirectionalLight(0xffffff, 2.0);
+// sunLight.position.set(-2, 0.5, 1.5);
+// scene.add(sunLight)
 
 
 let clock = new THREE.Clock()
@@ -62,7 +59,7 @@ function animate() {
   let time = clock.getElapsedTime()
   earthMesh.rotation.y = time * 0.04;
   lightMesh.rotation.y = time * 0.04;
-  cloudMesh.rotation.y = time * 0.07;
+  // cloudMesh.rotation.y = time * 0.07;
   stars.rotation.y = -(time * 0.01);
   
   renderer.render(scene, camera)

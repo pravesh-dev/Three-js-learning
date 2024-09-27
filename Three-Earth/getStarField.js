@@ -1,5 +1,15 @@
 import * as THREE from 'three'
 
+// let cloudMaterial = new THREE.MeshStandardMaterial({ map: textureLoader.load('/cloud.jpg'), blending: THREE.AdditiveBlending, alphaMap: textureLoader.load('/05_earthcloudmaptrans.jpg'),})
+// let cloudMesh = new THREE.Mesh(geometry, cloudMaterial);
+// cloudMesh.scale.setScalar(1.006)
+// earthGroup.add(cloudMesh);
+
+// let fresnelMaterial = getFresnelMat();
+// let glowMesh = new THREE.Mesh(geometry, fresnelMaterial);
+// glowMesh.scale.setScalar(1.02)
+// earthGroup.add(glowMesh);
+
 export default function getStarField({numStars= 500} = {}) {
     function randomSpherePoint() {
         const radius = Math.random() *305 + 205;
