@@ -46,9 +46,9 @@ earthGroup.add(cloudMesh);
 let stars = getStarField({numStars: 3000});
 scene.add(stars)
 
-// const sunLight = new THREE.DirectionalLight(0xffffff, 2.0);
-// sunLight.position.set(-2, 0.5, 1.5);
-// scene.add(sunLight)
+const sunLight = new THREE.DirectionalLight(0xffffff, 2.0);
+sunLight.position.set(-2, 0.5, 1.5);
+scene.add(sunLight)
 
 
 let clock = new THREE.Clock()
