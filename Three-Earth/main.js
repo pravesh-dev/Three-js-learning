@@ -37,7 +37,7 @@ let lightMesh = new THREE.Mesh(geometry, lightMaterial);
 earthGroup.add(lightMesh);
 
 let cloudMaterial = new THREE.MeshStandardMaterial({
-  map: textureLoader.load('/cloud.jpg')
+  map: textureLoader.load('/cloud.jpg'), blending: THREE.AdditiveBlending, alphaMap: textureLoader.load('/05_earthcloudmaptrans.jpg')
 })
 let cloudMesh = new THREE.Mesh(geometry, cloudMaterial);
 cloudMesh.scale.setScalar(1.006)
