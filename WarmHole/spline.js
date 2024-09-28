@@ -38,3 +38,17 @@ const curvePath = [10.136184463414924, -1.374508746897471, 10.384881573913269,
 	11.288646925965876, -1.374508746897471, 11.926359497447137,
 	10.136184463414924, -1.374508746897471, 10.384881573913269
 ];
+
+const points = [];
+
+for (let i = 0; i < curvePath.length; i += 3) {
+    points.push(new THREE.Vector3(
+        curvePath[i],
+        curvePath[i + 1],
+        curvePath[i + 2]
+    ))
+}
+
+const spline = new THREE.CatmullRomCurve3(points);
+
+export default spline;
