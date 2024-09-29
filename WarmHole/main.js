@@ -19,7 +19,7 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 
 
-let tubegeo = new THREE.TubeGeometry(spline, 20, 2, 2, false)
+let tubegeo = new THREE.TubeGeometry(spline, 222, 0.65, 16, true)
 let material = new THREE.MeshBasicMaterial({ wireframe: true});
 let tube = new THREE.Mesh(tubegeo, material)
 scene.add(tube)
