@@ -9,6 +9,8 @@ camera.position.z = 5;
 
 let canvas = document.querySelector('.my-canvas')
 const renderer = new THREE.WebGLRenderer({canvas, antialias: true})
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.setSize(w, h)
 
 const controls = new OrbitControls( camera, renderer.domElement );
