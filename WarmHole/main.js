@@ -18,13 +18,9 @@ const controls = new OrbitControls( camera, renderer.domElement );
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 
-let geometry = new THREE.BoxGeometry(1, 1, 1)
-let material = new THREE.MeshBasicMaterial({ wireframe: true})
-
-let mesh = new THREE.Mesh(geometry, material)
-scene.add(mesh);
 
 let tubegeo = new THREE.TubeGeometry(spline, 20, 2, 2, false)
+let material = new THREE.MeshBasicMaterial({ wireframe: true});
 let tube = new THREE.Mesh(tubegeo, material)
 scene.add(tube)
 
