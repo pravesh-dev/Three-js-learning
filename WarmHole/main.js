@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import spline from './spline.js'
 
 const w = window.innerWidth;
 const h = window.innerHeight;
@@ -23,8 +24,9 @@ let material = new THREE.MeshBasicMaterial({ wireframe: true})
 let mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh);
 
-// let hemiLight = new THREE.HemisphereLight(0xffffff, 0xfc0404, 0.9);
-// scene.add(hemiLight);
+let tubegeo = new THREE.TubeGeometry(spline, 20, 2, 2, false)
+let tube = new THREE.Mesh(tubegeo, material)
+scene.add(tube)
 
 function animate() {
   requestAnimationFrame(animate)
