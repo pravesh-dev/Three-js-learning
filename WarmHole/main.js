@@ -1,14 +1,15 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
+const w = window.innerWidth;
+const h = window.innerHeight;
 const scene = new THREE.Scene()
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-camera.position.z = 5;
-// scene.add(camera)
+const camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000)
+camera.position.z = 5;  
 
 let canvas = document.querySelector('.my-canvas')
 const renderer = new THREE.WebGLRenderer({canvas, antialias: true})
-renderer.setSize(window.innerWidth, window.innerHeight)
+renderer.setSize(w, h)
 
 const controls = new OrbitControls( camera, renderer.domElement );
 controls.enableDamping = true;
