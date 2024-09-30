@@ -20,6 +20,9 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 
 let tubegeo = new THREE.TubeGeometry(spline, 500, 0.7, 20, true);
+let tubeMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff, side: THREE.DoubleSide });
+let tube = new THREE.Mesh(tubegeo, tubeMaterial);
+scene.add(tube);
 
 const edges = new THREE.EdgesGeometry(tubegeo, 0.2);
 const lineMat = new THREE.LineBasicMaterial({ color: 0xffffff });
@@ -29,7 +32,7 @@ scene.add(tubeLines);
 let hemiLight = new THREE.HemisphereLight(0x274156, 0x1C6E8C, 0.9);
 scene.add(hemiLight);
 
-const boxes = 100;
+const boxes = 80;
 const size = 0.075;
 const boxGeo = new THREE.BoxGeometry(size, size, size);
 
@@ -54,7 +57,7 @@ for (let i = 0; i < boxes; i++) {
 }
 
 function updateCamera(t) {
-  const time = t * 0.03;
+  const time = t * 0.1;
   const looptime = 10 * 1000;
   const p = (time % looptime) / looptime;
   const pos = tubegeo.parameters.path.getPointAt(p);
