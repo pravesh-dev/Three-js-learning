@@ -19,13 +19,22 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 
 let tubegeo = new THREE.TubeGeometry(spline, 222, 0.65, 16, true);
-let material = new THREE.MeshBasicMaterial({
-  color: 0x00ff00,
-  // side: THREE.DoubleSide,
+let material = new THREE.MeshStandardMaterial({
+  side: THREE.DoubleSide,
+});
+
+let Wirematerial = new THREE.MeshBasicMaterial({
+  color: 0xffffff,
   wireframe: true,
 });
+
 let tube = new THREE.Mesh(tubegeo, material);
+let wiretube = new THREE.Mesh(tubegeo, Wirematerial);
 scene.add(tube);
+scene.add(wiretube);
+
+let hemiLight = new THREE.HemisphereLight(0x274156, 0x1C6E8C, 0.9);
+scene.add(hemiLight);
 
 function updateCamera(t) {
   const time = t * 0.03;
