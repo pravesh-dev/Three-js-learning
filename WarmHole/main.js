@@ -29,6 +29,30 @@ scene.add(tubeLines);
 let hemiLight = new THREE.HemisphereLight(0x274156, 0x1C6E8C, 0.9);
 scene.add(hemiLight);
 
+const boxes = 100;
+const size = 0.075;
+const boxGeo = new THREE.BoxGeometry(size, size, size);
+
+for (let i = 0; i < boxes; i++) {
+  const boxMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
+  const box = new THREE.Mesh(boxGeo, boxMaterial);
+  const p = (i / boxes + Math.random() * 0.1) % 1;
+  const pos = tubegeo.parameters.path.getPointAt(p);
+  pos.x += Math.random() - 0.02;
+  pos.z += Math.random() - 0.02;
+  box.position.copy(pos);
+
+  const rotation = new THREE.Vector3(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
+  box.rotation.set(rotation.x, rotation.y, rotation.z);
+
+  const edges = new THREE.EdgesGeometry(boxGeo);
+  const lineMat = new THREE.LineBasicMaterial({ color: 0x303078 });
+  const boxLines = new THREE.LineSegments(edges, lineMat);
+  boxLines.position.copy(pos);
+  boxLines.rotation.set(rotation.x, rotation.y, rotation.z);
+  scene.add(boxLines);
+}
+
 function updateCamera(t) {
   const time = t * 0.03;
   const looptime = 10 * 1000;
