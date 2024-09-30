@@ -20,18 +20,6 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 
 let tubegeo = new THREE.TubeGeometry(spline, 500, 0.7, 20, true);
-let material = new THREE.MeshStandardMaterial({
-  side: THREE.DoubleSide,
-});
-let material2 = new THREE.MeshBasicMaterial({
-  color: 0xffffff,
-  wireframe: true,
-});
-
-let tube = new THREE.Mesh(tubegeo, material);
-let wireTube = new THREE.Mesh(tubegeo, material2);
-scene.add(tube);
-scene.add(wireTube);
 
 let hemiLight = new THREE.HemisphereLight(0x274156, 0x1C6E8C, 0.9);
 scene.add(hemiLight);
