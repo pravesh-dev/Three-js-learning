@@ -61,7 +61,9 @@ for (let i = 0; i < boxes; i++) {
   box.rotation.set(rotation.x, rotation.y, rotation.z);
 
   const edges = new THREE.EdgesGeometry(boxGeo);
-  const lineMat = new THREE.LineBasicMaterial({ color: 0x303078 });
+  // const color = new THREE.Color(Math.random(), Math.random(), Math.random());
+  const color = new THREE.Color().setHSL(1.0 -p, 1, 0.5);
+  const lineMat = new THREE.LineBasicMaterial({ color });
   const boxLines = new THREE.LineSegments(edges, lineMat);
   boxLines.position.copy(pos);
   boxLines.rotation.set(rotation.x, rotation.y, rotation.z);
