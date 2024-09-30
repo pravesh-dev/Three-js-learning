@@ -19,26 +19,19 @@ const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 
-let tubegeo = new THREE.TubeGeometry(spline, 222, 0.65, 16, true);
+let tubegeo = new THREE.TubeGeometry(spline, 222, 1, 20, true);
 let material = new THREE.MeshStandardMaterial({
   side: THREE.DoubleSide,
 });
 
-let Wirematerial = new THREE.MeshBasicMaterial({
-  color: 0xffffff,
-  wireframe: true,
-});
-
 let tube = new THREE.Mesh(tubegeo, material);
-let wiretube = new THREE.Mesh(tubegeo, Wirematerial);
 scene.add(tube);
-scene.add(wiretube);
 
 let hemiLight = new THREE.HemisphereLight(0x274156, 0x1C6E8C, 0.9);
 scene.add(hemiLight);
 
-const edges = new THREE.EdgesGeometry(tubegeo, 1);
-const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff });
+const edges = new THREE.EdgesGeometry(tubegeo);
+const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff});
 const tubeline = new THREE.LineSegments(edges, lineMaterial);
 scene.add(tubeline);
 
