@@ -37,6 +37,11 @@ scene.add(wiretube);
 let hemiLight = new THREE.HemisphereLight(0x274156, 0x1C6E8C, 0.9);
 scene.add(hemiLight);
 
+const edges = new THREE.EdgesGeometry(tubegeo, 1);
+const lineMaterial = new THREE.LineBasicMaterial({ color: 0xffffff });
+const tubeline = new THREE.LineSegments(edges, lineMaterial);
+scene.add(tubeline);
+
 function updateCamera(t) {
   const time = t * 0.03;
   const looptime = 10 * 1000;
