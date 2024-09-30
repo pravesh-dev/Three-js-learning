@@ -27,8 +27,19 @@ let material = new THREE.MeshBasicMaterial({
 let tube = new THREE.Mesh(tubegeo, material);
 scene.add(tube);
 
-function animate() {
+function updateCamera(t) {
+  const time = t * 0.03;
+  const looptime = 10 * 1000;
+  const p = (time % looptime) / looptime;
+  const pos = tubegeo.parameters.path.getPointAt(p);
+  const lookAt = tubegeo.parameters.path.getPointAt((p + 0.01) % 1);
+  camera.position.copy(pos);
+  camera.lookAt(lookAt);
+}
+
+function animate(t = 0) {
   requestAnimationFrame(animate);
+  updateCamera(t);
   renderer.render(scene, camera);
   controls.update();
 }
