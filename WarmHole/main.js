@@ -21,6 +21,11 @@ controls.dampingFactor = 0.05;
 
 let tubegeo = new THREE.TubeGeometry(spline, 500, 0.7, 20, true);
 
+const edges = new THREE.EdgesGeometry(tubegeo, 0.2);
+const lineMat = new THREE.LineBasicMaterial({ color: 0xffffff });
+const tubeLines = new THREE.LineSegments(edges, lineMat);
+scene.add(tubeLines);
+
 let hemiLight = new THREE.HemisphereLight(0x274156, 0x1C6E8C, 0.9);
 scene.add(hemiLight);
 
