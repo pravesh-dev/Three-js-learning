@@ -1,6 +1,9 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import spline from "./spline.js";
+import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
+import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
 
 const w = window.innerWidth;
 const h = window.innerHeight;
@@ -19,10 +22,19 @@ const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 
+const renderScene = new RenderPass(scene, camera)
+const bloomPass = new UnrealBloomPass(new THREE.Vector2(w, h), 1.5, 0.4, 100)
+bloomPass.threshold = 0.002;
+bloomPass.strength = 0.6;
+bloomPass.radius = 0;
+const composer = new EffectComposer(renderer);
+composer.addPass(renderScene);
+composer.addPass(bloomPass);
+
 let tubegeo = new THREE.TubeGeometry(spline, 500, 0.7, 20, true);
 let tubeMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff, side: THREE.DoubleSide });
 let tube = new THREE.Mesh(tubegeo, tubeMaterial);
-scene.add(tube);
+// scene.add(tube);
 
 const edges = new THREE.EdgesGeometry(tubegeo, 0.2);
 const lineMat = new THREE.LineBasicMaterial({ color: 0xffffff });
@@ -69,7 +81,7 @@ function updateCamera(t) {
 function animate(t = 0) {
   requestAnimationFrame(animate);
   updateCamera(t);
-  renderer.render(scene, camera);
+  composer.render(scene, camera);
   controls.update();
 }
 
