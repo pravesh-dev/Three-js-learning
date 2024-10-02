@@ -8,7 +8,7 @@ import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js"
 const w = window.innerWidth;
 const h = window.innerHeight;
 const scene = new THREE.Scene();
-scene.fog = new THREE.FogExp2(0x000019, 0.3);
+scene.fog = new THREE.FogExp2(0xff000001, 0.3);
 const camera = new THREE.PerspectiveCamera(75, w / h, 0.1, 1000);
 camera.position.z = 5;
 
@@ -37,7 +37,7 @@ let tube = new THREE.Mesh(tubegeo, tubeMaterial);
 // scene.add(tube);
 
 const edges = new THREE.EdgesGeometry(tubegeo, 0.2);
-const lineMat = new THREE.LineBasicMaterial({ color: 0xffffff });
+const lineMat = new THREE.LineBasicMaterial({ color: 0xff3810});
 const tubeLines = new THREE.LineSegments(edges, lineMat);
 scene.add(tubeLines);
 
