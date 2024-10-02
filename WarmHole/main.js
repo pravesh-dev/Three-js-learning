@@ -48,6 +48,8 @@ const boxes = 80;
 const size = 0.075;
 const boxGeo = new THREE.BoxGeometry(size, size, size);
 
+const boxesArray = [];
+
 for (let i = 0; i < boxes; i++) {
   const boxMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
   const box = new THREE.Mesh(boxGeo, boxMaterial);
@@ -68,7 +70,10 @@ for (let i = 0; i < boxes; i++) {
   boxLines.position.copy(pos);
   boxLines.rotation.set(rotation.x, rotation.y, rotation.z);
   scene.add(boxLines);
+  
+  boxesArray.push(boxLines);
 }
+
 
 function updateCamera(t) {
   const time = t * 0.1;
@@ -78,6 +83,13 @@ function updateCamera(t) {
   const lookAt = tubegeo.parameters.path.getPointAt((p + 0.01) % 1);
   camera.position.copy(pos);
   camera.lookAt(lookAt);
+
+  // Rotate boxes
+  boxesArray.forEach((box, index) => {
+    box.rotation.x += 0.01 * (index % 3 + 1);
+    box.rotation.y += 0.02 * ((index + 1) % 3 + 1);
+    box.rotation.z += 0.03 * ((index + 2) % 3 + 1);
+  });
 }
 
 function animate(t = 0) {
