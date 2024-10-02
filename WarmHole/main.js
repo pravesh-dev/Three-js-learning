@@ -24,9 +24,9 @@ controls.dampingFactor = 0.05;
 
 const renderScene = new RenderPass(scene, camera)
 const bloomPass = new UnrealBloomPass(new THREE.Vector2(w, h), 1.5, 0.4, 100)
-bloomPass.threshold = 0.9;
-bloomPass.strength = 10;
-bloomPass.radius = 10;
+bloomPass.threshold = 0.5;
+bloomPass.strength = 0.1;
+bloomPass.radius = 0.007;
 const composer = new EffectComposer(renderer);
 composer.addPass(renderScene);
 composer.addPass(bloomPass);
@@ -61,8 +61,8 @@ for (let i = 0; i < boxes; i++) {
   box.rotation.set(rotation.x, rotation.y, rotation.z);
 
   const edges = new THREE.EdgesGeometry(boxGeo);
-  // const color = new THREE.Color(Math.random(), Math.random(), Math.random());
-  const color = new THREE.Color().setHSL(1.0 -p, 1, 0.5);
+  const color = new THREE.Color(Math.random(), Math.random(), Math.random());
+  // const color = new THREE.Color().setHSL(1.0 -p, 1, 0.5);
   const lineMat = new THREE.LineBasicMaterial({ color });
   const boxLines = new THREE.LineSegments(edges, lineMat);
   boxLines.position.copy(pos);
