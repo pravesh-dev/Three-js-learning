@@ -74,6 +74,7 @@ for (let i = 0; i < boxes; i++) {
   boxesArray.push(boxLines);
 }
 
+const clock = new THREE.Clock();
 
 function updateCamera(t) {
   const time = t * 0.1;
@@ -85,10 +86,11 @@ function updateCamera(t) {
   camera.lookAt(lookAt);
 
   // Rotate boxes
+  let clockTime = clock.getElapsedTime();
   boxesArray.forEach((box, index) => {
-    box.rotation.x += 0.01 * (index % 3 + 1);
-    box.rotation.y += 0.02 * ((index + 1) % 3 + 1);
-    box.rotation.z += 0.03 * ((index + 2) % 3 + 1);
+    box.rotation.x = clockTime * 0.3
+    box.rotation.y = clockTime * 0.3
+    box.rotation.z = clockTime * 0.3
   });
 }
 
