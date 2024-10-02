@@ -44,34 +44,47 @@ scene.add(tubeLines);
 let hemiLight = new THREE.HemisphereLight(0x274156, 0x1C6E8C, 0.9);
 scene.add(hemiLight);
 
-const boxes = 80;
+const shapes = 80;
 const size = 0.075;
 const boxGeo = new THREE.BoxGeometry(size, size, size);
+const sphereGeo = new THREE.SphereGeometry(size / 2, 8, 8);
+const cylinderGeo = new THREE.CylinderGeometry(size / 2, size / 2, size, 8);
+const rectangleGeo = new THREE.BoxGeometry(size * 1.5, size * 0.75, size * 0.5);
+const tubeGeo = new THREE.TorusGeometry(size / 2, size / 4, 8, 16);
 
-const boxesArray = [];
+const shapesArray = [];
 
-for (let i = 0; i < boxes; i++) {
-  const boxMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
-  const box = new THREE.Mesh(boxGeo, boxMaterial);
-  const p = (i / boxes + Math.random() * 0.1) % 1;
+for (let i = 0; i < shapes; i++) {
+  let geometry;
+  switch (i % 5) {
+    case 0: geometry = boxGeo; break;
+    case 1: geometry = sphereGeo; break;
+    case 2: geometry = cylinderGeo; break;
+    case 3: geometry = rectangleGeo; break;
+    case 4: geometry = tubeGeo; break;
+  }
+
+  const material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true });
+  const shape = new THREE.Mesh(geometry, material);
+  const p = (i / shapes + Math.random() * 0.1) % 1;
   const pos = tubegeo.parameters.path.getPointAt(p);
   pos.x += Math.random() - 0.02;
   pos.z += Math.random() - 0.02;
-  box.position.copy(pos);
+  shape.position.copy(pos);
 
   const rotation = new THREE.Vector3(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
-  box.rotation.set(rotation.x, rotation.y, rotation.z);
+  shape.rotation.set(rotation.x, rotation.y, rotation.z);
 
-  const edges = new THREE.EdgesGeometry(boxGeo);
+  const edges = new THREE.EdgesGeometry(geometry);
   const color = new THREE.Color(Math.random(), Math.random(), Math.random());
   // const color = new THREE.Color().setHSL(1.0 -p, 1, 0.5);
   const lineMat = new THREE.LineBasicMaterial({ color });
-  const boxLines = new THREE.LineSegments(edges, lineMat);
-  boxLines.position.copy(pos);
-  boxLines.rotation.set(rotation.x, rotation.y, rotation.z);
-  scene.add(boxLines);
+  const shapeLines = new THREE.LineSegments(edges, lineMat);
+  shapeLines.position.copy(pos);
+  shapeLines.rotation.set(rotation.x, rotation.y, rotation.z);
+  scene.add(shapeLines);
   
-  boxesArray.push(boxLines);
+  shapesArray.push(shapeLines);
 }
 
 const clock = new THREE.Clock();
@@ -85,12 +98,12 @@ function updateCamera(t) {
   camera.position.copy(pos);
   camera.lookAt(lookAt);
 
-  // Rotate boxes
+  // Rotate shapes
   let clockTime = clock.getElapsedTime();
-  boxesArray.forEach((box, index) => {
-    box.rotation.x = clockTime * 0.3
-    box.rotation.y = clockTime * 0.3
-    box.rotation.z = clockTime * 0.3
+  shapesArray.forEach((shape, index) => {
+    shape.rotation.x = clockTime * 0.3
+    shape.rotation.y = clockTime * 0.3
+    shape.rotation.z = clockTime * 0.3
   });
 }
 
