@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -54,10 +55,32 @@ window.addEventListener("resize", () => {
   camera.updateProjectionMatrix();
 })
 
-
 const controls = new OrbitControls( camera, renderer.domElement );
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
+
+// Add GUI
+const gui = new GUI();
+
+// Add cube controls
+const cubeFolder = gui.addFolder('Cube');
+cubeFolder.add(cube.rotation, 'x', 0, Math.PI * 2);
+cubeFolder.add(cube.rotation, 'y', 0, Math.PI * 2);
+cubeFolder.add(cube.rotation, 'z', 0, Math.PI * 2);
+cubeFolder.add(cube.scale, 'x', 0.1, 2).name('Scale X');
+cubeFolder.add(cube.scale, 'y', 0.1, 2).name('Scale Y');
+cubeFolder.add(cube.scale, 'z', 0.1, 2).name('Scale Z');
+
+// Add light controls
+const lightFolder = gui.addFolder('Lights');
+lightFolder.addColor(hemilight, 'color').name('Hemilight Color');
+lightFolder.add(hemilight, 'intensity', 0, 2).name('Hemilight Intensity');
+lightFolder.addColor(light, 'color').name('Directional Light Color');
+lightFolder.add(light, 'intensity', 0, 2).name('Directional Light Intensity');
+lightFolder.addColor(pointLight, 'color').name('Point Light Color');
+lightFolder.add(pointLight, 'intensity', 0, 2).name('Point Light Intensity');
+lightFolder.addColor(spotLight, 'color').name('Spot Light Color');
+lightFolder.add(spotLight, 'intensity', 0, 2).name('Spot Light Intensity');
 
 function animate() {
   window.requestAnimationFrame(animate);
