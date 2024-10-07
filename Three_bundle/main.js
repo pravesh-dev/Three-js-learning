@@ -13,8 +13,8 @@ const camera = new THREE.PerspectiveCamera(
 // const geometry = new THREE.SphereGeometry(2, 32, 16, 1, Math.PI * 2, 0, Math.PI * 4);
 const geometry = new THREE.IcosahedronGeometry(2.4, 2);
 const boxGeo = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshStandardMaterial({flatShading: true, color: '0xffffff'});
-const wireMaterial = new THREE.MeshBasicMaterial({color: '0xffffff', wireframe: true, antialias: true});
+const material = new THREE.MeshStandardMaterial({flatShading: true, color: 0xffffff});
+const wireMaterial = new THREE.MeshBasicMaterial({color: 0xffffff, wireframe: true, antialias: true});
 const cube = new THREE.Mesh(boxGeo, material);
 const wireMesh = new THREE.Mesh(boxGeo, wireMaterial);
 scene.add(cube);
@@ -70,6 +70,19 @@ cubeFolder.add(cube.rotation, 'z', 0, Math.PI * 2);
 cubeFolder.add(cube.scale, 'x', 0.1, 2).name('Scale X');
 cubeFolder.add(cube.scale, 'y', 0.1, 2).name('Scale Y');
 cubeFolder.add(cube.scale, 'z', 0.1, 2).name('Scale Z');
+
+// Add material controls
+const materialFolder = gui.addFolder('Material');
+materialFolder.addColor(material, 'color').name('Color');
+materialFolder.add(material, 'flatShading').onChange(() => material.needsUpdate = true);
+materialFolder.add(material, 'wireframe');
+materialFolder.add(material, 'metalness', 0, 1);
+materialFolder.add(material, 'roughness', 0, 1);
+
+// Add mesh controls
+const meshFolder = gui.addFolder('Mesh');
+meshFolder.add(cube, 'visible');
+meshFolder.add(wireMesh, 'visible').name('Wireframe Visible');
 
 // Add light controls
 const lightFolder = gui.addFolder('Lights');
