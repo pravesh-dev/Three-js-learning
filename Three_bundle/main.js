@@ -20,17 +20,6 @@ const wireMesh = new THREE.Mesh(boxGeo, wireMaterial);
 scene.add(cube);
 cube.add(wireMesh);
 
-let hemilight = new THREE.HemisphereLight('salmon', 'cyan', 0.9);
-const sphereHelper = new THREE.HemisphereLightHelper( hemilight, 3 );
-scene.add(hemilight);
-// scene.add(sphereHelper);
-
-const light = new THREE.DirectionalLight( 'green', 1 );
-light.position.set( 3, 1, 0 );
-const directionHelper = new THREE.DirectionalLightHelper( light, 2 );
-scene.add( light );
-// scene.add( directionHelper );
-
 camera.position.z = 5;
 
 let canvas = document.querySelector("canvas");
