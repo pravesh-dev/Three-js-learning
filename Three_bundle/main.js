@@ -61,6 +61,16 @@ const meshFolder = gui.addFolder('Mesh');
 meshFolder.add(cube, 'visible');
 meshFolder.add(wireMesh, 'visible').name('Wireframe Visible');
 
+// Add ambient light
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
+
+// Add ambient light controls to GUI
+const lightFolder = gui.addFolder('Ambient Light');
+lightFolder.add(ambientLight, 'intensity', 0, 1).name('Intensity');
+lightFolder.addColor(ambientLight, 'color').name('Color');
+
+
 function animate() {
   window.requestAnimationFrame(animate);
   renderer.render(scene, camera);
