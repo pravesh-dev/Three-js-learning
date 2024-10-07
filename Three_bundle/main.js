@@ -31,18 +31,6 @@ const directionHelper = new THREE.DirectionalLightHelper( light, 2 );
 scene.add( light );
 // scene.add( directionHelper );
 
-const pointLight = new THREE.PointLight('salmon', 1, 100);
-pointLight.position.set(-1, 1, 0);
-const pointHelper = new THREE.PointLightHelper(pointLight, 1);
-scene.add(pointLight);
-// scene.add(pointHelper);
-
-const spotLight = new THREE.SpotLight( 0xffffff );
-spotLight.position.set( 1, -2, 2 );
-const spotLightHelper = new THREE.SpotLightHelper( spotLight );
-scene.add( spotLight );
-scene.add( spotLightHelper );
-
 camera.position.z = 5;
 
 let canvas = document.querySelector("canvas");
