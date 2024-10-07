@@ -41,7 +41,7 @@ const spotLight = new THREE.SpotLight( 0xffffff );
 spotLight.position.set( 1, -2, 2 );
 const spotLightHelper = new THREE.SpotLightHelper( spotLight );
 scene.add( spotLight );
-// scene.add( spotLightHelper );
+scene.add( spotLightHelper );
 
 camera.position.z = 5;
 
@@ -83,17 +83,6 @@ materialFolder.add(material, 'roughness', 0, 1);
 const meshFolder = gui.addFolder('Mesh');
 meshFolder.add(cube, 'visible');
 meshFolder.add(wireMesh, 'visible').name('Wireframe Visible');
-
-// Add light controls
-const lightFolder = gui.addFolder('Lights');
-lightFolder.addColor(hemilight, 'color').name('Hemilight Color');
-lightFolder.add(hemilight, 'intensity', 0, 2).name('Hemilight Intensity');
-lightFolder.addColor(light, 'color').name('Directional Light Color');
-lightFolder.add(light, 'intensity', 0, 2).name('Directional Light Intensity');
-lightFolder.addColor(pointLight, 'color').name('Point Light Color');
-lightFolder.add(pointLight, 'intensity', 0, 2).name('Point Light Intensity');
-lightFolder.addColor(spotLight, 'color').name('Spot Light Color');
-lightFolder.add(spotLight, 'intensity', 0, 2).name('Spot Light Intensity');
 
 function animate() {
   window.requestAnimationFrame(animate);
