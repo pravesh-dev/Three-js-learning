@@ -18,7 +18,7 @@ const wireMaterial = new THREE.MeshBasicMaterial({color: 0xffffff, wireframe: tr
 const cube = new THREE.Mesh(boxGeo, material);
 const wireMesh = new THREE.Mesh(boxGeo, wireMaterial);
 scene.add(cube);
-cube.add(wireMesh);
+// cube.add(wireMesh);
 
 camera.position.z = 5;
 
@@ -61,15 +61,32 @@ const meshFolder = gui.addFolder('Mesh');
 meshFolder.add(cube, 'visible');
 meshFolder.add(wireMesh, 'visible').name('Wireframe Visible');
 
-// Add ambient light
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-scene.add(ambientLight);
+// Add hemisphere light
+const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x000000, 0.9);
+scene.add(hemisphereLight);
 
-// Add ambient light controls to GUI
-const lightFolder = gui.addFolder('Ambient Light');
-lightFolder.add(ambientLight, 'intensity', 0, 1).name('Intensity');
-lightFolder.addColor(ambientLight, 'color').name('Color');
+// Set light position
+hemisphereLight.position.set(2, 1, 0.2);
 
+// Add hemisphere light helper
+const hemisphereLightHelper = new THREE.HemisphereLightHelper(hemisphereLight, 1);
+scene.add(hemisphereLightHelper);
+
+
+
+// Add hemisphere light controls to GUI
+const lightFolder = gui.addFolder('Hemisphere Light');
+lightFolder.add(hemisphereLight, 'intensity', 0, 1).name('Intensity');
+lightFolder.addColor(hemisphereLight.color, 'r', 0, 1).name('Sky Color R');
+lightFolder.addColor(hemisphereLight.color, 'g', 0, 1).name('Sky Color G');
+lightFolder.addColor(hemisphereLight.color, 'b', 0, 1).name('Sky Color B');
+lightFolder.addColor(hemisphereLight.groundColor, 'r', 0, 1).name('Ground Color R');
+lightFolder.addColor(hemisphereLight.groundColor, 'g', 0, 1).name('Ground Color G');
+lightFolder.addColor(hemisphereLight.groundColor, 'b', 0, 1).name('Ground Color B');
+
+
+// Add helper visibility control to GUI
+lightFolder.add(hemisphereLightHelper, 'visible').name('Show Helper');
 
 function animate() {
   window.requestAnimationFrame(animate);
