@@ -10,10 +10,14 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
+// Texture loader
+const textureLoader = new THREE.TextureLoader();
+const texture = textureLoader.load('/IMAGES/1.jpg');
+
 // const geometry = new THREE.SphereGeometry(2, 32, 16, 1, Math.PI * 2, 0, Math.PI * 4);
 const geometry = new THREE.IcosahedronGeometry(2.4, 2);
 const boxGeo = new THREE.BoxGeometry(1, 1, 1);
-const material = new THREE.MeshStandardMaterial({flatShading: true, color: 0xffffff});
+const material = new THREE.MeshStandardMaterial({flatShading: true, map: texture});
 const wireMaterial = new THREE.MeshBasicMaterial({color: 0xffffff, wireframe: true, antialias: true});
 const cube = new THREE.Mesh(boxGeo, material);
 const wireMesh = new THREE.Mesh(boxGeo, wireMaterial);
@@ -62,11 +66,11 @@ meshFolder.add(cube, 'visible');
 meshFolder.add(wireMesh, 'visible').name('Wireframe Visible');
 
 // Add hemisphere light
-const hemisphereLight = new THREE.HemisphereLight(0xfc0404, 0x000000, 0.9);
+const hemisphereLight = new THREE.HemisphereLight(0x504401, 0xffffff, 0.9);
+// Set light position
+hemisphereLight.position.set(0.4, 1.1, 0.2);
 scene.add(hemisphereLight);
 
-// Set light position
-hemisphereLight.position.set(2, 1, 0.2);
 
 // Add hemisphere light helper
 const hemisphereLightHelper = new THREE.HemisphereLightHelper(hemisphereLight, 1);
