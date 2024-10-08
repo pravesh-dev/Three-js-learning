@@ -17,7 +17,12 @@ const texture = textureLoader.load('/IMAGES/1.jpg');
 // const geometry = new THREE.SphereGeometry(2, 32, 16, 1, Math.PI * 2, 0, Math.PI * 4);
 const geometry = new THREE.IcosahedronGeometry(2.4, 2);
 const boxGeo = new THREE.BoxGeometry(2.5, 2.5, 2.5);
-const material = new THREE.MeshStandardMaterial({flatShading: true, map: texture});
+const material = new THREE.MeshStandardMaterial({
+  flatShading: true,
+  map: texture,
+  metalness: 0.8,  // Increased metalness
+  roughness: 0.3   // Increased roughness
+});
 const wireMaterial = new THREE.MeshBasicMaterial({color: 0xffffff, wireframe: true, antialias: true});
 const cube = new THREE.Mesh(boxGeo, material);
 const wireMesh = new THREE.Mesh(boxGeo, wireMaterial);
@@ -91,7 +96,7 @@ lightFolder.add(hemisphereLightHelper, 'visible').name('Show Helper');
 
 // Add point light
 const pointLight = new THREE.PointLight(0xffffff, 0.8);
-pointLight.position.set(-0.3,0.5,1.65);
+pointLight.position.set(-0.3,0.5,3);
 scene.add(pointLight);
 
 // Add point light helper
