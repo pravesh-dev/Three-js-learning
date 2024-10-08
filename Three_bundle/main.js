@@ -72,8 +72,6 @@ hemisphereLight.position.set(2, 1, 0.2);
 const hemisphereLightHelper = new THREE.HemisphereLightHelper(hemisphereLight, 1);
 scene.add(hemisphereLightHelper);
 
-
-
 // Add hemisphere light controls to GUI
 const lightFolder = gui.addFolder('Hemisphere Light');
 lightFolder.add(hemisphereLight, 'intensity', 0, 1).name('Intensity');
@@ -84,9 +82,14 @@ lightFolder.addColor(hemisphereLight.groundColor, 'r', 0, 1).name('Ground Color 
 lightFolder.addColor(hemisphereLight.groundColor, 'g', 0, 1).name('Ground Color G');
 lightFolder.addColor(hemisphereLight.groundColor, 'b', 0, 1).name('Ground Color B');
 
-
 // Add helper visibility control to GUI
 lightFolder.add(hemisphereLightHelper, 'visible').name('Show Helper');
+
+// Add point light
+const pointLight = new THREE.PointLight(0xffffff, 1);
+pointLight.position.set(1, 1, 1);
+scene.add(pointLight);
+
 
 function animate() {
   window.requestAnimationFrame(animate);
