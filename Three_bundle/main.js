@@ -33,17 +33,17 @@ scene.add(cube);
 function addTextToCube() {
   // Load font
   const loader = new FontLoader();
-  loader.load('/fonts.Ubuntu/Regular.json', function(font) {
+  loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', function(font) {
     const textGeometry = new TextGeometry('Hello Three.js', {
       font: font,
-      size: 0.5,
-      height: 0.1,
-      curveSegments: 12,
+      size: 0.3,
+      depth: 0.1,
+      curveSegments: 4,
       bevelEnabled: false
     });
     const textMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
     const textMesh = new THREE.Mesh(textGeometry, textMaterial);
-    textMesh.position.set(-1, 0, 1); // Adjust position relative to cube
+    textMesh.position.set(-1.2, 1.2, 1.3); // Adjust position relative to cube
     cube.add(textMesh); // Add text as a child of the cube
   });
 }
