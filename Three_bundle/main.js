@@ -1,6 +1,8 @@
 import * as THREE from "three";
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';  // Import FontLoader
+import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -12,7 +14,7 @@ const camera = new THREE.PerspectiveCamera(
 
 // Texture loader
 const textureLoader = new THREE.TextureLoader();
-const texture = textureLoader.load('/IMAGES/1.jpg');
+const texture = textureLoader.load('/IMAGES/2.jpg');
 
 // const geometry = new THREE.SphereGeometry(2, 32, 16, 1, Math.PI * 2, 0, Math.PI * 4);
 const geometry = new THREE.IcosahedronGeometry(2.4, 2);
@@ -25,6 +27,30 @@ const material = new THREE.MeshStandardMaterial({
 });
 const cube = new THREE.Mesh(boxGeo, material);
 scene.add(cube);
+
+
+// Function to add text to the cube
+function addTextToCube() {
+  // Load font
+  const loader = new FontLoader();
+  loader.load('/fonts.Ubuntu/Regular.json', function(font) {
+    const textGeometry = new TextGeometry('Hello Three.js', {
+      font: font,
+      size: 0.5,
+      height: 0.1,
+      curveSegments: 12,
+      bevelEnabled: false
+    });
+    const textMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+    const textMesh = new THREE.Mesh(textGeometry, textMaterial);
+    textMesh.position.set(-1, 0, 1); // Adjust position relative to cube
+    cube.add(textMesh); // Add text as a child of the cube
+  });
+}
+
+// Call function to add text
+addTextToCube();
+
 
 camera.position.z = 5;
 
