@@ -20,14 +20,11 @@ const boxGeo = new THREE.BoxGeometry(2.5, 2.5, 2.5);
 const material = new THREE.MeshStandardMaterial({
   flatShading: true,
   map: texture,
-  metalness: 0.8,  // Increased metalness
-  roughness: 0.3   // Increased roughness
+  metalness: 0.8,
+  roughness: 0.3
 });
-const wireMaterial = new THREE.MeshBasicMaterial({color: 0xffffff, wireframe: true, antialias: true});
 const cube = new THREE.Mesh(boxGeo, material);
-const wireMesh = new THREE.Mesh(boxGeo, wireMaterial);
 scene.add(cube);
-// cube.add(wireMesh);
 
 camera.position.z = 5;
 
@@ -68,7 +65,6 @@ materialFolder.add(material, 'roughness', 0, 1);
 // Add mesh controls
 const meshFolder = gui.addFolder('Mesh');
 meshFolder.add(cube, 'visible');
-meshFolder.add(wireMesh, 'visible').name('Wireframe Visible');
 
 // Add hemisphere light
 const hemisphereLight = new THREE.HemisphereLight(0x504401, 0xffffff, 0.9);
