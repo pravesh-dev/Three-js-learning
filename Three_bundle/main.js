@@ -86,9 +86,13 @@ lightFolder.addColor(hemisphereLight.groundColor, 'b', 0, 1).name('Ground Color 
 lightFolder.add(hemisphereLightHelper, 'visible').name('Show Helper');
 
 // Add point light
-const pointLight = new THREE.PointLight(0xffffff, 1);
-pointLight.position.set(1, 1, 1);
+const pointLight = new THREE.PointLight(0xffffff, 0.7);
+pointLight.position.set(-0.3,1.3,0);
 scene.add(pointLight);
+
+// Add point light helper
+const pointLightHelper = new THREE.PointLightHelper(pointLight, 0.4);
+scene.add(pointLightHelper);
 
 
 function animate() {
