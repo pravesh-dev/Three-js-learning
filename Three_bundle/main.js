@@ -54,7 +54,7 @@ function addTextToCube() {
       curveSegments: 4,
       bevelEnabled: false,
     });
-    const shadowMaterial = new THREE.MeshPhongMaterial({ color: 0xfc0404, opacity: 0.6, transparent: true });
+    const shadowMaterial = new THREE.MeshPhongMaterial({ color: 0xffff33, opacity: 0.1, transparent: true });
     const shadowMesh = new THREE.Mesh(shadowGeometry, shadowMaterial);
     shadowMesh.position.set(-1.18, 1.2, 1.2); // Slightly offset from the main text and on the back
     shadowMesh.rotation.x = -1; // Rotate to face the back
