@@ -16,7 +16,7 @@ const texture = textureLoader.load('/IMAGES/1.jpg');
 
 // const geometry = new THREE.SphereGeometry(2, 32, 16, 1, Math.PI * 2, 0, Math.PI * 4);
 const geometry = new THREE.IcosahedronGeometry(2.4, 2);
-const boxGeo = new THREE.BoxGeometry(1, 1, 1);
+const boxGeo = new THREE.BoxGeometry(2.5, 2.5, 2.5);
 const material = new THREE.MeshStandardMaterial({flatShading: true, map: texture});
 const wireMaterial = new THREE.MeshBasicMaterial({color: 0xffffff, wireframe: true, antialias: true});
 const cube = new THREE.Mesh(boxGeo, material);
@@ -68,13 +68,13 @@ meshFolder.add(wireMesh, 'visible').name('Wireframe Visible');
 // Add hemisphere light
 const hemisphereLight = new THREE.HemisphereLight(0x504401, 0xffffff, 0.9);
 // Set light position
-hemisphereLight.position.set(0.4, 1.1, 0.2);
+hemisphereLight.position.set(1.4, 1.3, 0.2);
 scene.add(hemisphereLight);
 
 
 // Add hemisphere light helper
-const hemisphereLightHelper = new THREE.HemisphereLightHelper(hemisphereLight, 1);
-scene.add(hemisphereLightHelper);
+const hemisphereLightHelper = new THREE.HemisphereLightHelper(hemisphereLight, 3);
+// scene.add(hemisphereLightHelper);
 
 // Add hemisphere light controls to GUI
 const lightFolder = gui.addFolder('Hemisphere Light');
@@ -91,12 +91,12 @@ lightFolder.add(hemisphereLightHelper, 'visible').name('Show Helper');
 
 // Add point light
 const pointLight = new THREE.PointLight(0xffffff, 0.8);
-pointLight.position.set(-0.9,0.9,1);
+pointLight.position.set(-0.3,0.5,1.65);
 scene.add(pointLight);
 
 // Add point light helper
-const pointLightHelper = new THREE.PointLightHelper(pointLight, 0.3);
-scene.add(pointLightHelper);
+const pointLightHelper = new THREE.PointLightHelper(pointLight, 0.6);
+// scene.add(pointLightHelper);
 
 // Add point light controls to GUI
 const pointLightFolder = gui.addFolder('Point Light');
