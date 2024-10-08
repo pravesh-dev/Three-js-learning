@@ -39,12 +39,26 @@ function addTextToCube() {
       size: 0.3,
       depth: 0.1,
       curveSegments: 4,
-      bevelEnabled: false
+      bevelEnabled: false,
     });
-    const textMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+    const textMaterial = new THREE.MeshPhongMaterial({ color: 0xffff33 });
     const textMesh = new THREE.Mesh(textGeometry, textMaterial);
     textMesh.position.set(-1.2, 1.2, 1.3); // Adjust position relative to cube
     cube.add(textMesh); // Add text as a child of the cube
+
+    // Create shadow text
+    const shadowGeometry = new TextGeometry('Hello Three.js', {
+      font: font,
+      size: 0.3,
+      depth: 0.1,
+      curveSegments: 4,
+      bevelEnabled: false,
+    });
+    const shadowMaterial = new THREE.MeshPhongMaterial({ color: 0xfc0404, opacity: 0.6, transparent: true });
+    const shadowMesh = new THREE.Mesh(shadowGeometry, shadowMaterial);
+    shadowMesh.position.set(-1.18, 1.2, 1.2); // Slightly offset from the main text and on the back
+    shadowMesh.rotation.x = -1; // Rotate to face the back
+    cube.add(shadowMesh);
   });
 }
 
