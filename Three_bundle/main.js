@@ -62,7 +62,7 @@ meshFolder.add(cube, 'visible');
 meshFolder.add(wireMesh, 'visible').name('Wireframe Visible');
 
 // Add hemisphere light
-const hemisphereLight = new THREE.HemisphereLight(0xffffff, 0x000000, 0.9);
+const hemisphereLight = new THREE.HemisphereLight(0xfc0404, 0x000000, 0.9);
 scene.add(hemisphereLight);
 
 // Set light position
@@ -86,12 +86,12 @@ lightFolder.addColor(hemisphereLight.groundColor, 'b', 0, 1).name('Ground Color 
 lightFolder.add(hemisphereLightHelper, 'visible').name('Show Helper');
 
 // Add point light
-const pointLight = new THREE.PointLight(0xffffff, 0.7);
-pointLight.position.set(-0.3,1.3,0);
+const pointLight = new THREE.PointLight(0xffffff, 0.8);
+pointLight.position.set(-0.9,0.9,1);
 scene.add(pointLight);
 
 // Add point light helper
-const pointLightHelper = new THREE.PointLightHelper(pointLight, 0.4);
+const pointLightHelper = new THREE.PointLightHelper(pointLight, 0.3);
 scene.add(pointLightHelper);
 
 // Add point light controls to GUI
