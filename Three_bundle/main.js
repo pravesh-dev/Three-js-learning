@@ -30,11 +30,11 @@ scene.add(cube);
 
 
 // Function to add text to the cube
-function addTextToCube() {
+function addTextToCube(text) {
   // Load font
   const loader = new FontLoader();
   loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', function(font) {
-    const textGeometry = new TextGeometry('Hello Three.js', {
+    const textGeometry = new TextGeometry(text, {
       font: font,
       size: 0.3,
       depth: 0.1,
@@ -47,7 +47,7 @@ function addTextToCube() {
     cube.add(textMesh); // Add text as a child of the cube
 
     // Create shadow text
-    const shadowGeometry = new TextGeometry('Hello Three.js', {
+    const shadowGeometry = new TextGeometry(text, {
       font: font,
       size: 0.3,
       depth: 0.1,
@@ -63,7 +63,7 @@ function addTextToCube() {
 }
 
 // Call function to add text
-addTextToCube();
+addTextToCube('metal Cube');
 
 
 camera.position.z = 5;
