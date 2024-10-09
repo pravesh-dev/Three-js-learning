@@ -16,7 +16,6 @@ const camera = new THREE.PerspectiveCamera(
 const textureLoader = new THREE.TextureLoader();
 const texture = textureLoader.load('/IMAGES/2.jpg');
 
-const geometry = new THREE.IcosahedronGeometry(2.4, 2);
 const boxGeo = new THREE.BoxGeometry(2.5, 2.5, 2.5);
 const material = new THREE.MeshStandardMaterial({
   flatShading: true,
