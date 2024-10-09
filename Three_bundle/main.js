@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { GUI } from 'three/addons/libs/lil-gui.module.min.js';
-import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';  // Import FontLoader
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
 
 const scene = new THREE.Scene();
@@ -16,7 +16,6 @@ const camera = new THREE.PerspectiveCamera(
 const textureLoader = new THREE.TextureLoader();
 const texture = textureLoader.load('/IMAGES/2.jpg');
 
-// const geometry = new THREE.SphereGeometry(2, 32, 16, 1, Math.PI * 2, 0, Math.PI * 4);
 const geometry = new THREE.IcosahedronGeometry(2.4, 2);
 const boxGeo = new THREE.BoxGeometry(2.5, 2.5, 2.5);
 const material = new THREE.MeshStandardMaterial({
@@ -31,7 +30,6 @@ scene.add(cube);
 
 // Function to add text to the cube
 function addTextToCube(text) {
-  // Load font
   const loader = new FontLoader();
   loader.load('https://threejs.org/examples/fonts/helvetiker_regular.typeface.json', function(font) {
     const textGeometry = new TextGeometry(text, {
@@ -43,9 +41,9 @@ function addTextToCube(text) {
     });
     const textMaterial = new THREE.MeshPhongMaterial({ color: 0x2f7463 });
     const textMesh = new THREE.Mesh(textGeometry, textMaterial);
-    // textMesh.position.set(-1.2, 1.2, 1.3); // Adjust position relative to cube
-    textMesh.position.set(-1.2, 0.85, 1.3); // Adjust position relative to cube
-    cube.add(textMesh); // Add text as a child of the cube
+    // textMesh.position.set(-1.2, 1.2, 1.3);
+    textMesh.position.set(-1.2, 0.85, 1.3);
+    cube.add(textMesh);
 
     // Create shadow text
     const shadowGeometry = new TextGeometry(text, {
@@ -57,14 +55,15 @@ function addTextToCube(text) {
     });
     const shadowMaterial = new THREE.MeshPhongMaterial({ color: 0x2f7463, opacity: 0.4, transparent: true });
     const shadowMesh = new THREE.Mesh(shadowGeometry, shadowMaterial);
-    shadowMesh.position.set(-1.18, 1.2, 1.2); // Slightly offset from the main text and on the back
-    shadowMesh.rotation.x = -1; // Rotate to face the back
+    shadowMesh.position.set(-1.18, 1.2, 1.2);
+    shadowMesh.rotation.x = -1;
     // cube.add(shadowMesh);
   });
 }
 
 // Call function to add text
-addTextToCube('Metal Cube');
+// addTextToCube('Metal Cube');
+addTextToCube('Ritik Saini');
 
 
 camera.position.z = 5;
