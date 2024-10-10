@@ -12,7 +12,6 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-// Texture loader
 const textureLoader = new THREE.TextureLoader();
 const texture = textureLoader.load('/IMAGES/2.jpg');
 
@@ -59,8 +58,6 @@ function addTextToCube(text) {
     // cube.add(shadowMesh);
   });
 }
-
-// Call function to add text
 // addTextToCube('Metal Cube');
 addTextToCube('Ritik Saini');
 
@@ -81,7 +78,7 @@ const controls = new OrbitControls( camera, renderer.domElement );
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 
-// Add GUI
+
 const gui = new GUI();
 
 // Add cube controls
@@ -107,7 +104,6 @@ meshFolder.add(cube, 'visible');
 
 // Add hemisphere light
 const hemisphereLight = new THREE.HemisphereLight(0x2f7463, 0xffffff, 0.9);
-// Set light position
 hemisphereLight.position.set(1.4, 1.3, 0.2);
 scene.add(hemisphereLight);
 
