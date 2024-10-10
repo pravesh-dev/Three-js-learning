@@ -116,15 +116,6 @@ const pointLight = new THREE.PointLight(0xffffff, 0.8);
 pointLight.position.set(-0.3,0.5,3);
 scene.add(pointLight);
 
-// Add point light controls to GUI
-const pointLightFolder = gui.addFolder('Point Light');
-pointLightFolder.add(pointLight, 'intensity', 0, 2).name('Intensity');
-pointLightFolder.add(pointLight.position, 'x', -5, 5).name('Position X');
-pointLightFolder.add(pointLight.position, 'y', -5, 5).name('Position Y');
-pointLightFolder.add(pointLight.position, 'z', -5, 5).name('Position Z');
-pointLightFolder.addColor(pointLight, 'color').name('Color');
-pointLightFolder.add(pointLightHelper, 'visible').name('Show Helper');
-
 function animate() {
   window.requestAnimationFrame(animate);
   renderer.render(scene, camera);
