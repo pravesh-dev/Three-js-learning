@@ -116,10 +116,6 @@ const pointLight = new THREE.PointLight(0xffffff, 0.8);
 pointLight.position.set(-0.3,0.5,3);
 scene.add(pointLight);
 
-// Add point light helper
-const pointLightHelper = new THREE.PointLightHelper(pointLight, 0.6);
-// scene.add(pointLightHelper);
-
 // Add point light controls to GUI
 const pointLightFolder = gui.addFolder('Point Light');
 pointLightFolder.add(pointLight, 'intensity', 0, 2).name('Intensity');
