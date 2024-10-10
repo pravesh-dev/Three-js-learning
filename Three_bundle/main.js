@@ -111,11 +111,6 @@ const hemisphereLight = new THREE.HemisphereLight(0x2f7463, 0xffffff, 0.9);
 hemisphereLight.position.set(1.4, 1.3, 0.2);
 scene.add(hemisphereLight);
 
-
-// Add hemisphere light helper
-const hemisphereLightHelper = new THREE.HemisphereLightHelper(hemisphereLight, 3);
-// scene.add(hemisphereLightHelper);
-
 // Add point light
 const pointLight = new THREE.PointLight(0xffffff, 0.8);
 pointLight.position.set(-0.3,0.5,3);
