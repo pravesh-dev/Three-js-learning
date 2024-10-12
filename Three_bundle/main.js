@@ -57,8 +57,7 @@ function addTextToCube(text) {
     // cube.add(shadowMesh);
   });
 }
-// addTextToCube('Metal Cube');
-addTextToCube('Ritik Saini');
+addTextToCube('Metal Cube');
 
 
 camera.position.z = 5;
