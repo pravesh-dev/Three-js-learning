@@ -39,11 +39,10 @@ function addTextToCube(text) {
     });
     const textMaterial = new THREE.MeshPhongMaterial({ color: 0x2f7463 });
     const textMesh = new THREE.Mesh(textGeometry, textMaterial);
-    // textMesh.position.set(-1.2, 1.2, 1.3);
     textMesh.position.set(-1.2, 0.85, 1.3);
     cube.add(textMesh);
 
-    // Create shadow text
+    
     const shadowGeometry = new TextGeometry(text, {
       font: font,
       size: 0.35,
@@ -102,12 +101,10 @@ materialFolder.add(material, 'roughness', 0, 1);
 const meshFolder = gui.addFolder('Mesh');
 meshFolder.add(cube, 'visible');
 
-// Add hemisphere light
 const hemisphereLight = new THREE.HemisphereLight(0x2f7463, 0xffffff, 0.9);
 hemisphereLight.position.set(1.4, 1.3, 0.2);
 scene.add(hemisphereLight);
 
-// Add point light
 const pointLight = new THREE.PointLight(0xffffff, 0.8);
 pointLight.position.set(-0.3,0.5,3);
 scene.add(pointLight);
