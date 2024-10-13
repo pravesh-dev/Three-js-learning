@@ -29,6 +29,17 @@ const sphere = new THREE.Mesh(sphereGeo, sphereMaterial);
 sphere.position.set(3, 0, 0); // Position the sphere next to the cube
 scene.add(sphere);
 
+// Add a cylinder
+const cylinderGeo = new THREE.CylinderGeometry(0.5, 0.5, 2, 32);
+const cylinderMaterial = new THREE.MeshStandardMaterial({
+  flatShading: true,
+  metalness: 0.7,
+  roughness: 0.5
+});
+const cylinder = new THREE.Mesh(cylinderGeo, cylinderMaterial);
+cylinder.position.set(-3, 0, 0); // Position the cylinder on the other side of the cube
+scene.add(cylinder);
+
 camera.position.z = 5;
 
 let canvas = document.querySelector("canvas");
