@@ -18,17 +18,6 @@ const material = new THREE.MeshStandardMaterial({
 const cube = new THREE.Mesh(boxGeo, material);
 scene.add(cube);
 
-// Add a sphere
-const sphereGeo = new THREE.SphereGeometry(1, 32, 32);
-const sphereMaterial = new THREE.MeshStandardMaterial({
-  flatShading: true,
-  metalness: 0.6,
-  roughness: 0.4
-});
-const sphere = new THREE.Mesh(sphereGeo, sphereMaterial);
-sphere.position.set(3, 0, 0); // Position the sphere next to the cube
-scene.add(sphere);
-
 camera.position.z = 5;
 
 let canvas = document.querySelector("canvas");
