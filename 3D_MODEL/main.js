@@ -34,7 +34,7 @@ const controls = new OrbitControls( camera, renderer.domElement );
 controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 
-const hemisphereLight = new THREE.HemisphereLight(0x2f7463, 0xffffff, 0.9);
+const hemisphereLight = new THREE.HemisphereLight(0x4b0082, 0xffa500, 0.9);
 hemisphereLight.position.set(1.4, 1.3, 0.2);
 scene.add(hemisphereLight);
 
