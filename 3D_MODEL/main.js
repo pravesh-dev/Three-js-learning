@@ -1,5 +1,4 @@
 import * as THREE from "three";
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -30,10 +29,6 @@ window.addEventListener("resize", () => {
   camera.updateProjectionMatrix();
 })
 
-const controls = new OrbitControls( camera, renderer.domElement );
-controls.enableDamping = true;
-controls.dampingFactor = 0.05;
-
 const hemisphereLight = new THREE.HemisphereLight(0x4b0082, 0xffa500, 0.9);
 hemisphereLight.position.set(1.4, 1.3, 0.2);
 scene.add(hemisphereLight);
@@ -45,6 +40,5 @@ scene.add(pointLight);
 function animate() {
   window.requestAnimationFrame(animate);
   renderer.render(scene, camera);
-  controls.update();
 }
 animate();
