@@ -44,9 +44,8 @@ function animate() {
   
   const elapsedTime = clock.getElapsedTime();
   
-  // Add rotation animation to the cube based on elapsed time
-  cube.rotation.y = elapsedTime * 0.5; // Rotate around the y-axis
-  cube.rotation.x = Math.sin(elapsedTime) * 0.2; // Add some oscillation on x-axis
+  cube.rotation.y = elapsedTime * 0.5;
+  cube.rotation.x = Math.sin(elapsedTime) * 0.2;
   
   renderer.render(scene, camera);
 }
