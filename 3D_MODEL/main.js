@@ -37,11 +37,16 @@ const pointLight = new THREE.PointLight(0x00ff00, 0.8);
 pointLight.position.set(-0.3,0.5,3);
 scene.add(pointLight);
 
+const clock = new THREE.Clock();
+
 function animate() {
   requestAnimationFrame(animate);
   
-  // Add rotation animation to the cube
-  cube.rotation.y += 0.01; // Rotate around the y-axis (right rotation)
+  const elapsedTime = clock.getElapsedTime();
+  
+  // Add rotation animation to the cube based on elapsed time
+  cube.rotation.y = elapsedTime * 0.5; // Rotate around the y-axis
+  cube.rotation.x = Math.sin(elapsedTime) * 0.2; // Add some oscillation on x-axis
   
   renderer.render(scene, camera);
 }
