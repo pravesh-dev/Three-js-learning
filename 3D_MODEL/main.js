@@ -38,7 +38,11 @@ pointLight.position.set(-0.3,0.5,3);
 scene.add(pointLight);
 
 function animate() {
-  window.requestAnimationFrame(animate);
+  requestAnimationFrame(animate);
+  
+  // Add rotation animation to the cube
+  cube.rotation.y += 0.01; // Rotate around the y-axis (right rotation)
+  
   renderer.render(scene, camera);
 }
 animate();
