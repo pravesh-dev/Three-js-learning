@@ -10,9 +10,14 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-// Add hemisphere light
-const hemisphereLight = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
+// Add horizontal hemisphere light
+const hemisphereLight = new THREE.HemisphereLight(0xfc0404, 0xffffff, 1);
+hemisphereLight.position.set(0, 1, 0); // Set the light's position to be horizontal
 scene.add(hemisphereLight);
+
+// Add hemisphere light helper
+const hemisphereLightHelper = new THREE.HemisphereLightHelper(hemisphereLight, 0.5);
+scene.add(hemisphereLightHelper);
 
 let carModel;
 
