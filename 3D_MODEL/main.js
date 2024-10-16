@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -29,6 +30,11 @@ let canvas = document.querySelector("canvas");
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 
+// Add OrbitControls
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true; // Add smooth damping effect
+controls.dampingFactor = 0.05;
+
 window.addEventListener("resize", () => {
   renderer.setSize(window.innerWidth, window.innerHeight);
   camera.aspect = window.innerWidth / window.innerHeight;
@@ -45,6 +51,7 @@ scene.add(pointLight);
 
 function animate() {
   requestAnimationFrame(animate);
+  controls.update(); // Update OrbitControls in the animation loop
   renderer.render(scene, camera);
 }
 animate();
