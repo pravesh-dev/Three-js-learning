@@ -43,17 +43,8 @@ const pointLight = new THREE.PointLight(0x00ff00, 0.8);
 pointLight.position.set(-0.3,0.5,3);
 scene.add(pointLight);
 
-const clock = new THREE.Clock();
-
 function animate() {
   requestAnimationFrame(animate);
-  
-  const elapsedTime = clock.getElapsedTime();
-  
-  if (carModel) {
-    carModel.rotation.y = elapsedTime * 0.5;
-  }
-  
   renderer.render(scene, camera);
 }
 animate();
