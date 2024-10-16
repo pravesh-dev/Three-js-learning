@@ -10,6 +10,10 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
+// Add ambient light
+const ambientLight = new THREE.AmbientLight(0xfc0404, 1); // Color: white, Intensity: 0.5
+scene.add(ambientLight);
+
 let carModel;
 
 const loader = new GLTFLoader();
