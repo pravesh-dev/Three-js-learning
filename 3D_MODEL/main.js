@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -8,14 +9,19 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-const boxGeo = new THREE.BoxGeometry(2.5, 2.5, 2.5);
-const material = new THREE.MeshStandardMaterial({
-  flatShading: true,
-  metalness: 0.8,
-  roughness: 0.3
+let carModel;
+
+const loader = new GLTFLoader();
+loader.load('2022__hyundai_n_vision_74__thx_1.9k.glb', (gltf) => {
+  carModel = gltf.scene;
+  scene.add(carModel);
+  
+  // Adjust the model's position and scale if needed
+  carModel.position.set(0, 0, 0);
+  carModel.scale.set(1, 1, 1);
+}, undefined, (error) => {
+  console.error('An error occurred while loading the model:', error);
 });
-const cube = new THREE.Mesh(boxGeo, material);
-scene.add(cube);
 
 camera.position.z = 5;
 
@@ -44,8 +50,9 @@ function animate() {
   
   const elapsedTime = clock.getElapsedTime();
   
-  cube.rotation.y = elapsedTime * 0.5;
-  cube.rotation.x = Math.sin(elapsedTime) * 0.2;
+  if (carModel) {
+    carModel.rotation.y = elapsedTime * 0.5;
+  }
   
   renderer.render(scene, camera);
 }
