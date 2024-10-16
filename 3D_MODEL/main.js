@@ -12,7 +12,7 @@ const camera = new THREE.PerspectiveCamera(
 
 // Add horizontal hemisphere light
 const hemisphereLight = new THREE.HemisphereLight(0xfc0404, 0xffffff, 1);
-hemisphereLight.position.set(0, 1, 0); // Set the light's position to be horizontal
+hemisphereLight.position.set(3, 1, 0); // Set the light's position to be horizontal
 scene.add(hemisphereLight);
 
 // Add hemisphere light helper
