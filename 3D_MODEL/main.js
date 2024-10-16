@@ -41,14 +41,6 @@ window.addEventListener("resize", () => {
   camera.updateProjectionMatrix();
 })
 
-const hemisphereLight = new THREE.HemisphereLight(0x4b0082, 0xffa500, 0.9);
-hemisphereLight.position.set(1.4, 1.3, 0.2);
-scene.add(hemisphereLight);
-
-const pointLight = new THREE.PointLight(0x00ff00, 0.8);
-pointLight.position.set(-0.3,0.5,3);
-scene.add(pointLight);
-
 function animate() {
   requestAnimationFrame(animate);
   controls.update(); // Update OrbitControls in the animation loop
