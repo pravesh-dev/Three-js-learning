@@ -33,7 +33,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 
 // HDRI lighting
 const rgbeLoader = new RGBELoader();
-rgbeLoader.load('', function (texture){
+rgbeLoader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/marry_hall_1k.hdr', function (texture){
   texture.mapping = THREE.EquirectangularReflectionMapping;
   scene.environment = texture
   scene.background = texture
