@@ -10,11 +10,6 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-// Add horizontal hemisphere light
-const hemisphereLight = new THREE.HemisphereLight(0xfc0404, 0xffffff, 1);
-hemisphereLight.position.set(3, 2, 0); // Set the light's position to be horizontal
-scene.add(hemisphereLight);
-
 let carModel;
 
 const loader = new GLTFLoader();
