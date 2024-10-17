@@ -17,8 +17,6 @@ const loader = new GLTFLoader();
 loader.load('2022__hyundai_n_vision_74__thx_1.9k.glb', (gltf) => {
   carModel = gltf.scene;
   scene.add(carModel);
-  
-  // Adjust the model's position and scale if needed
   carModel.position.set(0, 0, 0);
   carModel.scale.set(1, 1, 1);
 }, undefined, (error) => {
@@ -36,12 +34,11 @@ const rgbeLoader = new RGBELoader();
 rgbeLoader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/marry_hall_1k.hdr', function (texture){
   texture.mapping = THREE.EquirectangularReflectionMapping;
   scene.environment = texture
-  scene.background = texture
 })
 
 // Add OrbitControls
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true; // Add smooth damping effect
+controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 
 window.addEventListener("resize", () => {
@@ -52,7 +49,7 @@ window.addEventListener("resize", () => {
 
 function animate() {
   requestAnimationFrame(animate);
-  controls.update(); // Update OrbitControls in the animation loop
+  controls.update();
   renderer.render(scene, camera);
 }
 animate();
