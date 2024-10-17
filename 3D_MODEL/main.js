@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -29,6 +30,14 @@ camera.position.z = 5;
 let canvas = document.querySelector("canvas");
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
+
+// HDRI lighting
+const rgbeLoader = new RGBELoader();
+rgbeLoader.load('', function (texture){
+  texture.mapping = THREE.EquirectangularReflectionMapping;
+  scene.environment = texture
+  scene.background = texture
+})
 
 // Add OrbitControls
 const controls = new OrbitControls(camera, renderer.domElement);
