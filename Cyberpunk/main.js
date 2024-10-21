@@ -16,6 +16,16 @@ const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
 const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
 
+// Resize function
+function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+// Add event listener for window resize
+window.addEventListener('resize', onWindowResize);
+
 // Animation loop
 function animate() {
     requestAnimationFrame(animate);
