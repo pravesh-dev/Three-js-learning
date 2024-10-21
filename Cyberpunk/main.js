@@ -19,6 +19,11 @@ scene.add(cube);
 // Animation loop
 function animate() {
     requestAnimationFrame(animate);
+
+    // Add rotation to the cube
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+
     renderer.render(scene, camera);
 }
 
