@@ -27,11 +27,6 @@ scene.add(cube);
 const hemisphereLight = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
 scene.add(hemisphereLight);
 
-// Add point light
-const pointLight = new THREE.PointLight(0xffffff, 1, 100);
-pointLight.position.set(5, 5, 5);
-scene.add(pointLight);
-
 // Create a clock
 const clock = new THREE.Clock();
 
