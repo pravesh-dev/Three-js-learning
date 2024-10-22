@@ -27,6 +27,10 @@ scene.add(cube);
 const hemisphereLight = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
 scene.add(hemisphereLight);
 
+// Add hemisphere light helper
+const hemisphereLightHelper = new THREE.HemisphereLightHelper(hemisphereLight, 0.5);
+scene.add(hemisphereLightHelper);
+
 // Create a clock
 const clock = new THREE.Clock();
 
