@@ -19,9 +19,13 @@ controls.dampingFactor = 0.05;
 
 // Create a simple cube
 const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 }); // Changed to MeshPhongMaterial for lighting
 const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
+
+// Add hemisphere light
+const hemisphereLight = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
+scene.add(hemisphereLight);
 
 // Create a clock
 const clock = new THREE.Clock();
