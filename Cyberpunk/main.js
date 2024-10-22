@@ -1,4 +1,6 @@
 import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+
 // Create a scene
 const scene = new THREE.Scene();
 
@@ -9,6 +11,11 @@ camera.position.z = 5;
 let canvas = document.querySelector("canvas");
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
+
+// Create OrbitControls
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true; // Add smooth damping effect
+controls.dampingFactor = 0.05;
 
 // Create a simple cube
 const geometry = new THREE.BoxGeometry();
@@ -29,6 +36,9 @@ window.addEventListener('resize', onWindowResize);
 // Animation loop
 function animate() {
     requestAnimationFrame(animate);
+
+    // Update OrbitControls
+    controls.update();
 
     // Add rotation to the cube
     cube.rotation.x += 0.01;
