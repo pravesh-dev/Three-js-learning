@@ -7,13 +7,13 @@ camera.position.z = 5;
 
 let canvas = document.querySelector("canvas");
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshPhongMaterial({ color: 0x00ff00 });
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
 const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
-
 
 function animate() {
     requestAnimationFrame(animate);
