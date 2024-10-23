@@ -31,9 +31,6 @@ scene.add(hemisphereLight);
 const hemisphereLightHelper = new THREE.HemisphereLightHelper(hemisphereLight, 0.5);
 scene.add(hemisphereLightHelper);
 
-// Create a clock
-const clock = new THREE.Clock();
-
 // Resize function
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
@@ -47,17 +44,7 @@ window.addEventListener('resize', onWindowResize);
 // Animation loop
 function animate() {
     requestAnimationFrame(animate);
-
-    // Get the elapsed time
-    const elapsedTime = clock.getElapsedTime();
-
-    // Update OrbitControls
     controls.update();
-
-    // Add rotation to the cube based on elapsed time
-    cube.rotation.x = elapsedTime * 0.5;
-    cube.rotation.y = elapsedTime * 0.7;
-
     renderer.render(scene, camera);
 }
 
