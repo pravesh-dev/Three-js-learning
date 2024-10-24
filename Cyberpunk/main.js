@@ -11,9 +11,8 @@ const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-// Add OrbitControls
 const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true; // Add smooth damping effect
+controls.enableDamping = true;
 
 const geometry = new THREE.BoxGeometry();
 const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
@@ -22,9 +21,7 @@ scene.add(cube);
 
 function animate() {
     requestAnimationFrame(animate);
-    cube.rotation.x += 0.01
-    cube.rotation.y += 0.01
-    controls.update(); // Update controls in the animation loop
+    controls.update();
     renderer.render(scene, camera);
 }
 
