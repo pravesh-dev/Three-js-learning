@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 const scene = new THREE.Scene();
 
@@ -14,10 +15,17 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 
-const geometry = new THREE.BoxGeometry();
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-const cube = new THREE.Mesh(geometry, material);
-scene.add(cube);
+const loader = new GLTFLoader();
+loader.load(
+    '/smoking_gun.glb',
+    function (gltf) {
+        scene.add(gltf.scene);
+    },
+    undefined,
+    function (error) {
+        console.error(error);
+    }
+);
 
 function animate() {
     requestAnimationFrame(animate);
