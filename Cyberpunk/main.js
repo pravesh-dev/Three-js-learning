@@ -6,7 +6,7 @@ import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 5;
+camera.position.z = 15;
 
 let canvas = document.querySelector("canvas");
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
@@ -30,7 +30,10 @@ const loader = new GLTFLoader();
 loader.load(
     '/smoking_gun.glb',
     function (gltf) {
-        scene.add(gltf.scene);
+        const model = gltf.scene;
+        // Change the size of the 3D model
+        model.scale.set(0.6, 0.6, 0.6); // Scale up the model by a factor of 2
+        scene.add(model);
     },
     undefined,
     function (error) {
