@@ -28,7 +28,7 @@ rgbeLoader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/photo_stud
 
 const loader = new GLTFLoader();
 loader.load(
-    '/smoking_gun.glb',
+    '/DamagedHelmet.gltf',
     function (gltf) {
         const model = gltf.scene;
         // Change the size of the 3D model
