@@ -20,7 +20,7 @@ controls.enableDamping = true;
 
 // Load HDRI
 const rgbeLoader = new RGBELoader();
-rgbeLoader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/photo_studio_london_hall_1k.hdr', function (texture) {
+rgbeLoader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/brown_photostudio_02_1k.hdr', function (texture) {
     texture.mapping = THREE.EquirectangularReflectionMapping;
     scene.environment = texture;
     scene.background = texture;
@@ -32,7 +32,7 @@ loader.load(
     function (gltf) {
         const model = gltf.scene;
         // Change the size of the 3D model
-        model.scale.set(0.6, 0.6, 0.6); // Scale up the model by a factor of 2
+        model.scale.set(6, 6, 6); // Scale up the model by a factor of 2
         scene.add(model);
     },
     undefined,
