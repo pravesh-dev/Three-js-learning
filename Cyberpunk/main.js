@@ -31,8 +31,7 @@ loader.load(
     '/DamagedHelmet.gltf',
     function (gltf) {
         const model = gltf.scene;
-        // Change the size of the 3D model
-        model.scale.set(6, 6, 6); // Scale up the model by a factor of 2
+        model.scale.set(6, 6, 6);
         scene.add(model);
     },
     undefined,
