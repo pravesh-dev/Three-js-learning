@@ -26,13 +26,14 @@ rgbeLoader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/brown_phot
     scene.background = texture;
 });
 
+let helmetModel;
 const loader = new GLTFLoader();
 loader.load(
     '/DamagedHelmet.gltf',
     function (gltf) {
-        const model = gltf.scene;
-        model.scale.set(6, 6, 6);
-        scene.add(model);
+        helmetModel = gltf.scene;
+        helmetModel.scale.set(6, 6, 6);
+        scene.add(helmetModel);
     },
     undefined,
     function (error) {
@@ -40,8 +41,20 @@ loader.load(
     }
 );
 
+const clock = new THREE.Clock();
+
 function animate() {
     requestAnimationFrame(animate);
+    
+    const elapsedTime = clock.getElapsedTime();
+    
+    // Rotate the helmet if it's loaded
+    if (helmetModel) {
+        helmetModel.rotation.y = elapsedTime * 0.5; // Rotate around Y axis
+        helmetModel.position.y = Math.sin(elapsedTime) * 0.5; // Bob up and down
+        helmetModel.rotation.z = Math.sin(elapsedTime * 0.5) * 0.2; // Slight tilt animation
+    }
+    
     controls.update();
     renderer.render(scene, camera);
 }
