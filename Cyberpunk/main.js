@@ -43,20 +43,8 @@ rgbeLoader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/brown_phot
     );
 });
 
-const clock = new THREE.Clock();
-
 function animate() {
-    requestAnimationFrame(animate);
-    
-    const elapsedTime = clock.getElapsedTime();
-    
-    // Rotate the helmet if it's loaded
-    if (helmetModel) {
-        helmetModel.rotation.y = elapsedTime * 0.5; // Rotate around Y axis
-        helmetModel.position.y = Math.sin(elapsedTime) * 0.5; // Bob up and down
-        helmetModel.rotation.z = Math.sin(elapsedTime * 0.5) * 0.2; // Slight tilt animation
-    }
-    
+    requestAnimationFrame(animate);    
     controls.update();
     renderer.render(scene, camera);
 }
