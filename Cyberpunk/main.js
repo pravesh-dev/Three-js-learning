@@ -21,14 +21,12 @@ controls.enableDamping = true;
 let helmetModel;
 const loader = new GLTFLoader();
 
-// Load HDRI first, then load the 3D model
 const rgbeLoader = new RGBELoader();
 rgbeLoader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/warm_restaurant_night_1k.hdr', function (texture) {
     texture.mapping = THREE.EquirectangularReflectionMapping;
     scene.environment = texture;
     scene.background = texture;
-    
-    // Load the 3D model after HDRI is loaded
+
     loader.load(
         '/DamagedHelmet.gltf',
         function (gltf) {
