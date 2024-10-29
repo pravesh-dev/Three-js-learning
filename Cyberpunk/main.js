@@ -41,7 +41,7 @@ let model;
 const loader = new GLTFLoader();
 
 const rgbeLoader = new RGBELoader();
-rgbeLoader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/boma_1k.hdr', function (texture) {
+rgbeLoader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/cyclorama_hard_light_1k.hdr', function (texture) {
     texture.mapping = THREE.EquirectangularReflectionMapping;
     scene.environment = texture;
 
@@ -49,7 +49,7 @@ rgbeLoader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/boma_1k.hd
         '/DamagedHelmet.gltf',
         function (gltf) {
             model = gltf.scene;
-            model.scale.set(7, 7, 7);
+            model.scale.set(7.9, 7.9, 7.9);
             scene.add(model);
         },
         undefined,
