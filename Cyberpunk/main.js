@@ -45,7 +45,7 @@ const rgbShiftPass = new ShaderPass(RGBShiftShader);
 rgbShiftPass.uniforms['amount'].value = 0.001;
 composer.addPass(rgbShiftPass);
 
-let helmetModel;
+let model;
 const loader = new GLTFLoader();
 
 const rgbeLoader = new RGBELoader();
@@ -57,9 +57,9 @@ rgbeLoader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/warm_resta
     loader.load(
         '/DamagedHelmet.gltf',
         function (gltf) {
-            helmetModel = gltf.scene;
-            helmetModel.scale.set(6, 6, 6);
-            scene.add(helmetModel);
+            model = gltf.scene;
+            model.scale.set(6, 6, 6);
+            scene.add(model);
         },
         undefined,
         function (error) {
@@ -67,6 +67,12 @@ rgbeLoader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/warm_resta
         }
     );
 });
+
+window.addEventListener("mousemove", (e)=>{
+    if(model){
+        
+    }
+})
 
 function animate() {
     requestAnimationFrame(animate);    
