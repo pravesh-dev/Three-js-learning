@@ -6,6 +6,7 @@ import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import { RGBShiftShader } from 'three/examples/jsm/shaders/RGBShiftShader.js';
+import gsap from 'gsap';
 
 const scene = new THREE.Scene();
 
@@ -62,8 +63,12 @@ window.addEventListener("mousemove", (e)=>{
     if(model){
         const rotationX = (e.clientX/ window.innerWidth - 0.5) * Math.PI * 0.15;
         const rotationY = (e.clientY/ window.innerHeight - 0.5) * Math.PI * 0.15;
-        model.rotation.x = rotationY;
-        model.rotation.y = rotationX;
+        gsap.to(model.rotation, {
+            x: rotationY,
+            y: rotationX,
+            duration: 0.5,
+            ease: "power2.out"
+        });
     }
 })
 
