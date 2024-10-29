@@ -27,29 +27,21 @@ composer.addPass(renderPass);
 
 const bloomPass = new UnrealBloomPass(
     new THREE.Vector2(window.innerWidth, window.innerHeight),
-    0.1,  // strength
+    0.2,  // strength
     0.3,  // radius
     0.85  // threshold
 );
 composer.addPass(bloomPass);
 
-const filmPass = new FilmPass(
-    0.1,  // noise intensity
-    0.025,  // scanline intensity
-    648,    // scanline count
-    false   // grayscale
-);
-composer.addPass(filmPass);
-
 const rgbShiftPass = new ShaderPass(RGBShiftShader);
-rgbShiftPass.uniforms['amount'].value = 0.001;
+rgbShiftPass.uniforms['amount'].value = 0.0002;
 composer.addPass(rgbShiftPass);
 
 let model;
 const loader = new GLTFLoader();
 
 const rgbeLoader = new RGBELoader();
-rgbeLoader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/warm_restaurant_night_1k.hdr', function (texture) {
+rgbeLoader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/boma_1k.hdr', function (texture) {
     texture.mapping = THREE.EquirectangularReflectionMapping;
     scene.environment = texture;
     // scene.background = texture;
