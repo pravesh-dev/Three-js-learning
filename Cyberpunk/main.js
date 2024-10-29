@@ -58,7 +58,7 @@ rgbeLoader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/warm_resta
         '/DamagedHelmet.gltf',
         function (gltf) {
             model = gltf.scene;
-            model.scale.set(6, 6, 6);
+            model.scale.set(7, 7, 7);
             scene.add(model);
         },
         undefined,
@@ -70,8 +70,8 @@ rgbeLoader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/warm_resta
 
 window.addEventListener("mousemove", (e)=>{
     if(model){
-        const rotationX = (e.clientX/ window.innerWidth - 0.5) * Math.PI 
-        const rotationY = (e.clientY/ window.innerHeight - 0.5) * Math.PI;
+        const rotationX = (e.clientX/ window.innerWidth - 0.5) * Math.PI * 0.15;
+        const rotationY = (e.clientY/ window.innerHeight - 0.5) * Math.PI * 0.15;
         model.rotation.x = rotationY;
         model.rotation.y = rotationX;
     }
