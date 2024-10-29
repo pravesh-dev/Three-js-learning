@@ -26,14 +26,14 @@ composer.addPass(renderPass);
 
 const bloomPass = new UnrealBloomPass(
     new THREE.Vector2(window.innerWidth, window.innerHeight),
-    1.5,  // strength
-    0.4,  // radius
+    0.1,  // strength
+    0.3,  // radius
     0.85  // threshold
 );
 composer.addPass(bloomPass);
 
 const filmPass = new FilmPass(
-    0.35,  // noise intensity
+    0.1,  // noise intensity
     0.025,  // scanline intensity
     648,    // scanline count
     false   // grayscale
