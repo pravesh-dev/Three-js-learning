@@ -70,7 +70,10 @@ rgbeLoader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/warm_resta
 
 window.addEventListener("mousemove", (e)=>{
     if(model){
-        
+        const rotationX = (e.clientX/ window.innerWidth - 0.5) * Math.PI 
+        const rotationY = (e.clientY/ window.innerHeight - 0.5) * Math.PI;
+        model.rotation.x = rotationY;
+        model.rotation.y = rotationX;
     }
 })
 
