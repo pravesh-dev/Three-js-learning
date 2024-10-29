@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { RGBELoader } from 'three/examples/jsm/loaders/RGBELoader.js';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
@@ -46,9 +45,6 @@ const rgbShiftPass = new ShaderPass(RGBShiftShader);
 rgbShiftPass.uniforms['amount'].value = 0.001;
 composer.addPass(rgbShiftPass);
 
-const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
-
 let helmetModel;
 const loader = new GLTFLoader();
 
@@ -74,7 +70,6 @@ rgbeLoader.load('https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/warm_resta
 
 function animate() {
     requestAnimationFrame(animate);    
-    controls.update();
     composer.render();
 }
 
