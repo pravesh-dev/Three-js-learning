@@ -34,7 +34,7 @@ const bloomPass = new UnrealBloomPass(
 composer.addPass(bloomPass);
 
 const rgbShiftPass = new ShaderPass(RGBShiftShader);
-rgbShiftPass.uniforms['amount'].value = 0.0002;
+rgbShiftPass.uniforms['amount'].value = 0.0015;
 composer.addPass(rgbShiftPass);
 
 let model;
