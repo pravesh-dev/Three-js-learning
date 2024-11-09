@@ -70,6 +70,7 @@ header .content-fit nav ul{
 
 #banner .title {
     color: #d1ff48;
+    color: #edffb6;
     font-size: 11em;
     font-family: "devil breeze";
     font-weight: bold;
@@ -83,6 +84,7 @@ header .content-fit nav ul{
     inset: 0.66em 0 0 0;
     z-index: -1;
     color: #445022;
+    color: #4f4f36;
 }
 .section .decorate {
     position: absolute;
