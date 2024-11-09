@@ -67,6 +67,10 @@ header .content-fit nav ul{
     display: flex;
     gap: 2em;
 }
+#banner {
+    background: url(Images/sec_1_bg.png) no-repeat center;
+    background-size: 100% 100%;
+}
 
 #banner .title {
     color: #d1ff48;
