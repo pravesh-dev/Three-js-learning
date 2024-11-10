@@ -40,9 +40,17 @@ scene.add(directionalLight);
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight);
 
+
 const reRender3D = () =>{
     requestAnimationFrame(reRender3D);
     controls.update();
     renderer.render(scene, camera);
 };
+
 reRender3D();
+// Handle window resize
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
