@@ -12,13 +12,18 @@ camera.position.z = 20;
 
 const scene = new THREE.Scene();
 let bee;
+let mixer;
 
 const loader = new GLTFLoader();
 loader.load('./model/bee_bot.glb',
     function(gltf) {
         bee = gltf.scene;
         bee.position.y = -1
-        scene.add(bee)
+        scene.add(bee);
+
+        mixer = new THREE.AnimationMixer(bee);
+        mixer.clipAction(gltf.animations[0]).play();
+        console.log(gltf.animations)
     },
     function(xhr) {},
     function(err) {}
@@ -37,6 +42,7 @@ scene.add(ambientLight);
 
 const reRender3D = () =>{
     requestAnimationFrame(reRender3D);
+    mixer.update(0.02);
     renderer.render(scene, camera);
 };
 
