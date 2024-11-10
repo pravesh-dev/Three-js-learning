@@ -18,14 +18,10 @@ const loader = new GLTFLoader();
 loader.load('./model/bee_bot.glb',
     function(gltf) {
         bee = gltf.scene;
-        bee.position.x = 2.2
-        bee.position.y = -1.2
-        bee.position.z = -1
-        bee.rotation.y = -1
         scene.add(bee);
-
         mixer = new THREE.AnimationMixer(bee);
         mixer.clipAction(gltf.animations[0]).play();
+        moveModel()
     },
     function(xhr) {},
     function(err) {}
@@ -44,8 +40,8 @@ scene.add(ambientLight);
 
 const reRender3D = () =>{
     requestAnimationFrame(reRender3D);
-    mixer.update(0.02);
     renderer.render(scene, camera);
+    if(mixer) mixer.update(0.02);
 };
 
 reRender3D();
@@ -63,7 +59,7 @@ let arrPositionModel = [
     },
     {
         id: 'description',
-        position: {x: 2.2, y: 0.2, z: -5},
+        position: {x: -2.2, y: 0.2, z: -5},
         rotation: {x: 0, y: 1, z: 0},
     },
     {
