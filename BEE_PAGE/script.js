@@ -18,12 +18,14 @@ const loader = new GLTFLoader();
 loader.load('./model/bee_bot.glb',
     function(gltf) {
         bee = gltf.scene;
-        bee.position.y = -1
+        bee.position.x = 2.2
+        bee.position.y = -1.2
+        bee.position.z = -1
+        bee.rotation.y = -1
         scene.add(bee);
 
         mixer = new THREE.AnimationMixer(bee);
         mixer.clipAction(gltf.animations[0]).play();
-        console.log(gltf.animations)
     },
     function(xhr) {},
     function(err) {}
@@ -47,6 +49,30 @@ const reRender3D = () =>{
 };
 
 reRender3D();
+
+let arrPositionModel = [
+    {
+        id: 'banner',
+        position: {x: 0.5, y: -1.4, z: 0},
+        rotation: {x: 0, y: 1, z: 0},
+    },
+    {
+        id: 'intro',
+        position: {x: 2.4, y: -0.8, z: -5},
+        rotation: {x: 0, y: -1, z: 0},
+    },
+    {
+        id: 'description',
+        position: {x: 2.2, y: 0.2, z: -5},
+        rotation: {x: 0, y: 1, z: 0},
+    },
+    {
+        id: 'contact',
+        position: {x: 2.2, y: -1.2, z: -1},
+        rotation: {x: 0, y: -1, z: 0},
+    },
+]
+
 // Handle window resize
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
