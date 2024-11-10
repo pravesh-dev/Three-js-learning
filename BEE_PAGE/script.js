@@ -18,6 +18,7 @@ const loader = new GLTFLoader();
 loader.load('./model/bee_bot.glb',
     function(gltf) {
         bee = gltf.scene;
+        bee.position.y = -1
         scene.add(bee)
     },
     function(xhr) {},
@@ -34,10 +35,10 @@ controls.enableDamping = true;
 controls.dampingFactor = 0.05;
 
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-directionalLight.position.set(5, 5, 5);
+directionalLight.position.set(-1, 2, 2);
 scene.add(directionalLight);
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+const ambientLight = new THREE.AmbientLight(0xffffff, 1);
 scene.add(ambientLight);
 
 
