@@ -9,7 +9,7 @@ const camera = new THREE.PerspectiveCamera(
     0.1,
     1000
 );
-camera.position.z = 13;
+camera.position.z = 20;
 
 const scene = new THREE.Scene();
 let bee;
@@ -35,3 +35,9 @@ scene.add(directionalLight);
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
 scene.add(ambientLight);
+
+const reRender3D = () =>{
+    requestAnimationFrame(reRender3D);
+    renderer.render(scene, camera);
+};
+reRender3D();
