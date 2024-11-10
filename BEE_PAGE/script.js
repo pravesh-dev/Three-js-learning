@@ -73,6 +73,42 @@ let arrPositionModel = [
     },
 ]
 
+const moveModel = () => {
+    const sections = document.querySelectorAll('.section');
+    let currentSection;
+    sections.forEach((section)=>{
+        const rect = section.getBoundingClientRect();
+        if(rect.top <= window.innerHeight / 3) {
+            currentSection = section.id;
+        }
+    });
+    let position_active = arrPositionModel.findIndex((val)=> val.id == currentSection);
+    
+    if(position_active >= 0) {
+        let new_corrdinates = arrPositionModel[position_active];
+        gsap.to(bee.position, {
+            x: new_corrdinates.position.x,
+            y: new_corrdinates.position.y,
+            z: new_corrdinates.position.z,
+            duration: 3,
+            ease: "power1.out"
+        });
+        gsap.to(bee.rotation, {
+            x: new_corrdinates.rotation.x,
+            y: new_corrdinates.rotation.y,
+            z: new_corrdinates.rotation.z,
+            duration: 3,
+            ease: "power1.out"
+        });
+    }
+};
+
+window.addEventListener('scroll', () =>{
+    if(bee){
+        moveModel();
+    } 
+})
+
 // Handle window resize
 window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
