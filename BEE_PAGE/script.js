@@ -2,6 +2,17 @@ import * as THREE from 'https://cdn.skypack.dev/three@0.129.0/build/three.module
 import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js';
 import { gsap } from 'https://cdn.skypack.dev/gsap';
 
+// Initialize Lenis
+const lenis = new Lenis();
+
+// Use requestAnimationFrame to continuously update the scroll
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+
 const camera = new THREE.PerspectiveCamera(
     10,
     window.innerWidth / window.innerHeight,
@@ -74,7 +85,7 @@ const moveModel = () => {
     let currentSection;
     sections.forEach((section)=>{
         const rect = section.getBoundingClientRect();
-        if(rect.top <= window.innerHeight / 3) {
+        if(rect.top <= window.innerHeight / 2) {
             currentSection = section.id;
         }
     });
@@ -86,14 +97,14 @@ const moveModel = () => {
             x: new_corrdinates.position.x,
             y: new_corrdinates.position.y,
             z: new_corrdinates.position.z,
-            duration: 3,
+            duration: 2,
             ease: "power1.out"
         });
         gsap.to(bee.rotation, {
             x: new_corrdinates.rotation.x,
             y: new_corrdinates.rotation.y,
             z: new_corrdinates.rotation.z,
-            duration: 3,
+            duration: 2,
             ease: "power1.out"
         });
     }
