@@ -17,7 +17,7 @@ function canvas() {
     }, [])
     
   return (
-    <canvas ref={canvasRef} id='canvas'></canvas>
+    <canvas ref={canvasRef} className='w-52 h-52' id='canvas'></canvas>
   )
 }
 
