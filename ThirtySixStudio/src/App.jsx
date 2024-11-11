@@ -4,7 +4,9 @@ import Canvas from './canvas'
 function App() {
   return (
     <div className='w-full min-h-screen bg-black text-white'>
-      <Canvas />
+      <Canvas startIndex={0} />
+      <Canvas startIndex={150} />
+      <Canvas startIndex={300} />
     </div>
   )
 }
