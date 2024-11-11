@@ -1,9 +1,10 @@
 import React from 'react'
+import Canvas from './canvas'
 
 function App() {
   return (
-    <div>
-      home app
+    <div className='w-full min-h-screen bg-black text-white'>
+      <Canvas />
     </div>
   )
 }
