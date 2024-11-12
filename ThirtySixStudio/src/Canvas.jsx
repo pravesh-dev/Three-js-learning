@@ -39,8 +39,8 @@ function canvas({ details }) {
         width: `${size}px`,
         height: `${size}px`,
         position: "absolute",
-        top: `${top}%`,
         left: `${left}%`,
+        top: `${top}%`,
         zIndex: zIndex,
       }}
       id="canvas"

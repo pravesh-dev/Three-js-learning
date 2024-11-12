@@ -7,13 +7,11 @@ function App() {
     <div className='w-full min-h-screen bg-black text-white'>
       {
         data.map((section, index)=>{
-          return <div key={index} className='w-full h-screen bg-red-700 border'>
+          return <div key={index} className='w-full min-h-screen bg-red-700 border relative overflow-hidden'>
             {
               section.map((canvasItem, idx)=>{
                 return (
-                  <div key={idx} className='relative'>
-                    <Canvas details={canvasItem} />
-                  </div>
+                    <Canvas key={index} details={canvasItem} />
                 )
               })
             }
