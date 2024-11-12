@@ -3,8 +3,9 @@ import canvasimages from './canvasimages'
 import { useGSAP } from "@gsap/react";
 import gsap from 'gsap';
 
-function canvas({startIndex}) {
+function canvas({details}) {
     const canvasRef = useRef(null);
+    const { startIndex, numImages, duration, size, top, left, zIndex } = details
     const [index, setIndex] = useState({value: startIndex});
 
     useGSAP(()=>{
