@@ -18,6 +18,14 @@ function canvas({ details }) {
         setIndex({ value: Math.round(index.value) });
       },
     });
+
+    gsap.to(canvasRef.current, {
+      scale: 1.1,
+      duration: 1,
+      repeat: -1,
+      yoyo: true,
+      ease: "power1.inOut"
+    });
   });
 
   useEffect(() => {
@@ -34,6 +42,8 @@ function canvas({ details }) {
 
   return (
     <canvas
+    data-scroll
+    data-scroll-speed={0.1}
       ref={canvasRef}
       style={{
         width: `${size}px`,

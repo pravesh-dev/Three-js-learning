@@ -18,7 +18,7 @@ function App() {
             {
               section.map((canvasItem, idx)=>{
                 return (
-                    <Canvas key={index} details={canvasItem} />
+                    <Canvas key={idx} details={canvasItem} />
                 )
               })
             }
