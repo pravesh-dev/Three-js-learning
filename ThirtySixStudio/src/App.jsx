@@ -14,7 +14,7 @@ function App() {
     <div className='w-full min-h-screen bg-black text-white'>
       {
         data.map((section, index)=>{
-          return <div key={index} className='w-full min-h-screen bg-red-700 border relative overflow-hidden'>
+          return <div key={index} className='w-full min-h-screen border relative overflow-hidden'>
             {
               section.map((canvasItem, idx)=>{
                 return (

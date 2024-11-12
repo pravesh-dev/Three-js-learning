@@ -46,8 +46,8 @@ function canvas({ details }) {
     data-scroll-speed={0.1}
       ref={canvasRef}
       style={{
-        width: `${size}px`,
-        height: `${size}px`,
+        width: `${size * 1.2}px`,
+        height: `${size * 1.2}px`,
         position: "absolute",
         left: `${left}%`,
         top: `${top}%`,
