@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Canvas from './canvas';
 import data from './data';
+import LocomotiveScroll from 'locomotive-scroll';
+
+
 
 function App() {
+  useEffect(() => {
+    const locomotiveScroll = new LocomotiveScroll();
+  }, [])
+  
   return (
     <div className='w-full min-h-screen bg-black text-white'>
       {
